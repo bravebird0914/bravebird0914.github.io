@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <!-- 【編集箇所】記事タイトルとdescription -->
-  <title>記事タイトル | bravebird Blog</title>
-  <meta name="description" content="記事の説明文をここに記入してください。" />
+  <title>ポートフォリオサイトの作成で学んだこと | bravebird Blog</title>
+  <meta name="description" content="このポートフォリオサイトを作成する過程で学んだデザインのポイントやアニメーション実装のコツについてまとめました。" />
   
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -338,15 +338,13 @@
       <header class="blog-article-header">
         <!-- 【編集箇所】日付とカテゴリー -->
         <div class="blog-article-meta">
-          <span class="blog-article-date">2024.12.XX</span>
-          <span class="blog-article-category">カテゴリー名</span>
+          <span class="blog-article-date">2024-12-15</span>
+          <span class="blog-article-category">Tech</span>
         </div>
         <!-- 【編集箇所】記事タイトル -->
-        <h1 class="blog-article-title">記事タイトルをここに入力</h1>
+        <h1 class="blog-article-title">ポートフォリオサイトの作成で学んだこと</h1>
         <!-- 【編集箇所】記事の要約 -->
-        <p class="blog-article-excerpt">
-          記事の導入文や要約をここに書きます。読者の興味を引く内容で始めましょう。
-        </p>
+        <p class="blog-article-excerpt">このポートフォリオサイトを作成する過程で学んだデザインのポイントやアニメーション実装のコツについてまとめました。</p>
       </header>
       
       <!-- 【編集箇所】記事の画像（オプション） -->
@@ -358,46 +356,49 @@
       
       <!-- 【編集箇所】記事本文 -->
       <div class="blog-article-content">
-        <p>
-          記事の本文をここに書きます。
-        </p>
+<h1>ポートフォリオサイトの作成で学んだこと</h1>
 
-        <h2>見出し2（大見出し）</h2>
-        <p>
-          本文をここに書きます。
-        </p>
+<p>このポートフォリオサイトを作成する過程で学んだデザインのポイントやアニメーション実装のコツについてまとめました。</p>
+
+<h2>はじめに</h2>
+
+<p>静岡大学情報学部でNLPの研究をしているbravebirdです。今回、自分のポートフォリオサイトを作成する機会があり、デザインや実装について多くのことを学びました。</p>
+
+<h2>デザインのポイント</h2>
+
+<h3>1. カラースキーム</h3>
+
+<p>アクアマリン（#7FFFD4）をメインカラーに選びました。寒色系で清潔感があり、技術系のサイトにマッチします。</p>
+
+<h3>2. タイポグラフィ</h3>
+
+<ul><li><strong>タイトル</strong>: Playfair Display（エレガント）</li><li><strong>本文</strong>: Montserrat（モダン）</li><li><strong>日本語</strong>: Noto Sans JP</li></ul>
+
+<p>フォントの組み合わせで洗練された印象を作り出しました。</p>
+
+<h3>3. アニメーション</h3>
+
+<pre><code class="language-css">.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 32px rgba(127, 255, 212, 0.25);
+}
+</code></pre>
+
+<p>ホバー時のアニメーションで、インタラクティブな体験を提供しています。</p>
+
+<h2>実装のコツ</h2>
+
+<p>1. <strong>CSS変数を活用</strong> → 色の管理が簡単
+2. <strong>ダークモード対応</strong> → localStorage + prefers-color-scheme
+3. <strong>レスポンシブデザイン</strong> → Grid Layout + Media Queries</p>
+
+<h2>まとめ</h2>
+
+<p>ポートフォリオサイト作成を通じて、デザインとコーディングの両面で成長できました。今後も改善を続けていきます！</p>
+
+
+
         
-        <h3>見出し3（小見出し）</h3>
-        <p>
-          さらに詳しい内容を書きます。
-        </p>
-        
-        <!-- リスト例 -->
-        <ul>
-          <li>箇条書き項目1</li>
-          <li>箇条書き項目2</li>
-          <li>箇条書き項目3</li>
-        </ul>
-
-        <!-- 引用例 -->
-        <blockquote>
-          引用文をここに書きます。重要なポイントや参考文献の引用に使用します。
-        </blockquote>
-
-        <!-- コードブロック例 -->
-        <pre><code>// コード例
-function example() {
-  console.log('Hello, World!');
-}</code></pre>
-
-        <p>
-          インラインコードは <code>このように</code> 書きます。
-        </p>
-
-        <h2>まとめ</h2>
-        <p>
-          記事のまとめをここに書きます。
-        </p>
       </div>
 
       <footer class="blog-article-footer">

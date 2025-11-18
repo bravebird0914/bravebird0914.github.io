@@ -54,6 +54,53 @@ bravebird0914.github.io/
 └── README.md
 ```
 
+## 📝 ブログ記事の追加方法
+
+### 1. Markdownで記事を書く
+
+`blog/posts/` に新しい `.md` ファイルを作成します。
+
+ファイル名の形式: `YYYY-MM-DD-記事名.md`
+
+```markdown
+---
+title: 記事タイトル
+date: 2024-12-15
+category: Tech
+excerpt: 記事の要約（一覧ページに表示されます）
+---
+
+# 見出し
+
+本文をMarkdownで書きます。
+
+## 小見出し
+
+- リスト項目1
+- リスト項目2
+
+コードは \`\`\` で囲みます。
+```
+
+### 2. ビルドスクリプトを実行
+
+```bash
+python3 scripts/build_blog.py
+```
+
+これだけで：
+- ✅ HTMLファイルが自動生成される
+- ✅ 記事一覧（posts.json）が更新される
+- ✅ index.htmlとblog/index.htmlに自動表示される
+
+### 3. 確認してプッシュ
+
+```bash
+git add .
+git commit -m "blog: 新しい記事を追加"
+git push origin main
+```
+
 ## 🎨 カスタマイズ方法
 
 ### プロフィール画像の変更
