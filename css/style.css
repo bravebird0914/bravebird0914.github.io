@@ -701,11 +701,11 @@ section:nth-child(8) { animation-delay: 0.8s; }
 }
 
 .collaborator-name {
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   font-weight: 600;
   color: #1a202c;
   margin-bottom: 0;
-  font-family: 'Playfair Display', 'Noto Sans JP', serif;
+  font-family: 'Noto Sans JP', serif;
   transition: color 0.3s ease;
   line-height: 1.4;
 }
@@ -715,12 +715,11 @@ section:nth-child(8) { animation-delay: 0.8s; }
 }
 
 .collaborator-title {
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   color: #718096;
   font-weight: 400;
-  letter-spacing: 0.02em;
   font-family: 'Noto Sans JP', sans-serif;
-  margin-left: 0.4rem;
+  margin-left: 0.3rem;
 }
 
 .collaborator-affiliation {
