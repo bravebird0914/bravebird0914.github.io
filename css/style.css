@@ -85,6 +85,16 @@ body {
   justify-content: center;
 }
 
+.profile-image-link {
+  display: inline-block;
+  text-decoration: none;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.profile-image-link:hover {
+  transform: translateY(-4px);
+}
+
 .profile-image {
   width: 140px;
   height: 140px;
@@ -95,10 +105,15 @@ body {
   box-shadow: 0 4px 12px rgba(127, 255, 212, 0.2);
 }
 
-.profile-image:hover {
-  transform: scale(1.05);
+.profile-image-link:hover .profile-image {
   border-color: rgba(127, 255, 212, 0.5);
   box-shadow: 0 8px 24px rgba(127, 255, 212, 0.35);
+}
+
+.sidebar-title-link {
+  text-decoration: none;
+  display: inline-block;
+  position: relative;
 }
 
 .sidebar-title {
@@ -108,8 +123,10 @@ body {
   letter-spacing: 0.05em;
   line-height: 1.3;
   transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  cursor: default;
+  cursor: pointer;
   font-family: 'Playfair Display', 'Noto Sans JP', serif;
+  position: relative;
+  display: inline-block;
 }
 
 .name-first {
@@ -129,10 +146,10 @@ body {
   display: inline-block;
   transition: all 0.3s ease;
   letter-spacing: 0.02em;
-  position: relative;
 }
 
-.name-second::after {
+/* 下線を全体に適用 */
+.sidebar-title::after {
   content: '';
   position: absolute;
   bottom: -2px;
@@ -143,17 +160,19 @@ body {
   transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.sidebar-title:hover .name-first {
-  transform: translateX(-3px);
+.sidebar-title-link:hover .sidebar-title {
+  transform: translateY(-2px);
+}
+
+.sidebar-title-link:hover .name-first {
   filter: brightness(1.15);
 }
 
-.sidebar-title:hover .name-second {
-  transform: translateX(3px);
+.sidebar-title-link:hover .name-second {
   color: #00CED1;
 }
 
-.sidebar-title:hover .name-second::after {
+.sidebar-title-link:hover .sidebar-title::after {
   width: 100%;
 }
 
@@ -345,6 +364,7 @@ section {
   opacity: 0;
   transform: translateY(30px);
   animation: fadeInUp 0.8s ease forwards;
+  scroll-margin-top: 2rem;
 }
 
 @keyframes fadeInUp {
@@ -1107,6 +1127,48 @@ section:nth-child(8) { animation-delay: 0.8s; }
   transform: translateX(4px);
 }
 
+/* ホームに戻るボタン */
+.blog-back-to-home {
+  margin-top: 4rem;
+  padding-top: 3rem;
+  border-top: 1px solid rgba(127, 255, 212, 0.2);
+  text-align: center;
+}
+
+.back-to-home-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: #00CED1;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 1rem 2.5rem;
+  border-radius: 12px;
+  background: rgba(127, 255, 212, 0.08);
+  border: 1px solid rgba(127, 255, 212, 0.2);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: 'Montserrat', 'Noto Sans JP', sans-serif;
+}
+
+.back-to-home-button svg {
+  width: 22px;
+  height: 22px;
+  transition: all 0.3s ease;
+}
+
+.back-to-home-button:hover {
+  background: rgba(127, 255, 212, 0.15);
+  border-color: rgba(127, 255, 212, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(127, 255, 212, 0.2);
+  color: #20B2AA;
+}
+
+.back-to-home-button:hover svg {
+  transform: scale(1.1);
+}
+
 /* 既存のブログセクション */
 .blog-list {
   margin-bottom: 1.5rem;
@@ -1305,8 +1367,13 @@ body.dark-mode .name-second {
   color: #f1f5f9;
 }
 
-body.dark-mode .sidebar-title:hover .name-second {
+body.dark-mode .sidebar-title-link:hover .name-second {
   color: #7FFFD4;
+}
+
+body.dark-mode .profile-image-link:hover .profile-image {
+  border-color: rgba(127, 255, 212, 0.5);
+  box-shadow: 0 8px 24px rgba(127, 255, 212, 0.35);
 }
 
 body.dark-mode .sidebar-subtitle {
@@ -1631,6 +1698,23 @@ body.dark-mode .blog-card-coming-soon:hover {
 
 body.dark-mode .blog-card-coming-soon .blog-card-title {
   color: #64748b;
+}
+
+body.dark-mode .blog-back-to-home {
+  border-top-color: rgba(127, 255, 212, 0.2);
+}
+
+body.dark-mode .back-to-home-button {
+  background: rgba(127, 255, 212, 0.1);
+  border-color: rgba(127, 255, 212, 0.25);
+  color: #7FFFD4;
+}
+
+body.dark-mode .back-to-home-button:hover {
+  background: rgba(127, 255, 212, 0.2);
+  border-color: rgba(127, 255, 212, 0.5);
+  color: #00CED1;
+  box-shadow: 0 8px 16px rgba(127, 255, 212, 0.25);
 }
 
 body.dark-mode a {

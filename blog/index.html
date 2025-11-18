@@ -18,12 +18,16 @@
   <aside class="sidebar">
     <div class="sidebar-header">
       <div class="profile-image-wrapper">
-        <img src="../images/profile.svg" alt="Profile" class="profile-image">
+        <a href="../index.html" class="profile-image-link">
+          <img src="../images/profile.svg" alt="Profile" class="profile-image">
+        </a>
       </div>
       
-      <h1 class="sidebar-title">
-        <span class="name-first">brave</span><span class="name-second">bird</span>
-      </h1>
+      <a href="../index.html" class="sidebar-title-link">
+        <h1 class="sidebar-title">
+          <span class="name-first">brave</span><span class="name-second">bird</span>
+        </h1>
+      </a>
       <p class="sidebar-subtitle">
         <span class="subtitle-line">Shizuoka University</span>
         <span class="subtitle-line">Faculty of Informatics</span>
@@ -113,6 +117,17 @@
         <!-- 記事追加スペース -->
         <!-- 新しい記事を追加する場合は、blog-cardをコピーして上に追加してください -->
 
+      </div>
+      
+      <!-- ブログセクションに戻るボタン -->
+      <div class="blog-back-to-home">
+        <a href="../index.html#blog" class="back-to-home-button smooth-scroll-offset">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+          <span>Back</span>
+        </a>
       </div>
     </section>
   </main>

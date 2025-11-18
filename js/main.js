@@ -25,6 +25,25 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 
+// 外部ページからのハッシュリンク（#blog等）でのスクロール位置調整
+window.addEventListener('load', () => {
+  if (window.location.hash) {
+    const target = document.querySelector(window.location.hash);
+    if (target) {
+      // 少し遅延させてからスクロール（ページ読み込み完了を待つ）
+      setTimeout(() => {
+        const offset = 100; // 100px上にオフセット
+        const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - offset;
+        
+        window.scrollTo({
+          top: targetPosition,
+          behavior: 'smooth'
+        });
+      }, 100);
+    }
+  }
+});
+
 // アクティブなナビゲーション項目を強調表示
 const observeNavigation = () => {
   const sections = document.querySelectorAll('section[id]');
