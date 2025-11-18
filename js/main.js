@@ -2,6 +2,72 @@
 // エレガントなポートフォリオサイト用JavaScript
 // ========================================
 
+// 日付と曜日の表示
+function updateCurrentDate() {
+  console.log('📅 updateCurrentDate called');
+  
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = String(now.getMonth() + 1).padStart(2, '0');
+  const day = String(now.getDate()).padStart(2, '0');
+  const weekdays = ['日', '月', '火', '水', '木', '金', '土'];
+  const weekday = weekdays[now.getDay()];
+
+  const dateYear = document.querySelector('.date-year');
+  const dateMonthDay = document.querySelector('.date-month-day');
+  const dateWeekday = document.querySelector('.date-weekday');
+
+  console.log('Found elements:', { dateYear, dateMonthDay, dateWeekday });
+  console.log('Date values:', { year, month, day, weekday });
+
+  if (dateYear) {
+    dateYear.textContent = year;
+    console.log('✅ Year updated:', year);
+  } else {
+    console.log('❌ .date-year element not found');
+  }
+  
+  if (dateMonthDay) {
+    dateMonthDay.textContent = `${month}.${day}`;
+    console.log('✅ Month-Day updated:', `${month}.${day}`);
+  } else {
+    console.log('❌ .date-month-day element not found');
+  }
+  
+  if (dateWeekday) {
+    dateWeekday.textContent = weekday;
+    console.log('✅ Weekday updated:', weekday);
+  } else {
+    console.log('❌ .date-weekday element not found');
+  }
+}
+
+// ページ読み込み完了後に日付を更新
+console.log('🚀 main.js loaded');
+
+// DOMが完全に読み込まれてから実行
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', () => {
+    console.log('✅ DOMContentLoaded fired');
+    updateCurrentDate();
+  });
+} else {
+  console.log('✅ DOM already loaded');
+  updateCurrentDate();
+}
+
+// 日付が変わったら更新（午前0時に更新）
+setTimeout(() => {
+  const now = new Date();
+  const tomorrow = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
+  const timeUntilMidnight = tomorrow - now;
+  setTimeout(() => {
+    updateCurrentDate();
+    // その後は24時間ごとに更新
+    setInterval(updateCurrentDate, 24 * 60 * 60 * 1000);
+  }, timeUntilMidnight);
+}, 100);
+
 // スムーススクロール
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
