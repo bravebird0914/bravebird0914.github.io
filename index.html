@@ -2,595 +2,211 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
-  <title>吉田勇翔 / bravebird | Portfolio</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="吉田勇翔 / bravebird のポートフォリオサイト。" />
-  <style>
-    /* ---- Reset (最低限) ---- */
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-        sans-serif;
-      background: #020617;
-      color: #e5e7eb;
-      line-height: 1.7;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
-    /* ---- Layout ---- */
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      backdrop-filter: blur(12px);
-      background: rgba(2, 6, 23, 0.85);
-      border-bottom: 1px solid rgba(148, 163, 184, 0.3);
-    }
-
-    .nav-inner {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 0.6rem 1.4rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-    }
-
-    .brand {
-      font-weight: 700;
-      letter-spacing: 0.03em;
-      font-size: 0.95rem;
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
-
-    .brand span {
-      padding: 0.05rem 0.4rem;
-      border-radius: 999px;
-      border: 1px solid rgba(94, 234, 212, 0.7);
-      font-size: 0.7rem;
-      color: #5eead4;
-    }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 1rem;
-      font-size: 0.9rem;
-    }
-
-    nav a {
-      position: relative;
-      padding-bottom: 0.1rem;
-    }
-
-    nav a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 0;
-      height: 1px;
-      background: linear-gradient(90deg, #5eead4, #38bdf8);
-      transition: width 0.2s ease;
-    }
-
-    nav a:hover::after {
-      width: 100%;
-    }
-
-    main {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 2.5rem 1.4rem 4rem;
-    }
-
-    section {
-      margin-bottom: 4rem;
-    }
-
-    .section-title {
-      font-size: 1.3rem;
-      font-weight: 600;
-      margin-bottom: 1.2rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
-
-    .section-title::before {
-      content: "";
-      width: 18px;
-      height: 1px;
-      background: linear-gradient(90deg, #38bdf8, transparent);
-    }
-
-    .muted {
-      color: #9ca3af;
-      font-size: 0.9rem;
-    }
-
-    /* ---- Hero ---- */
-    .hero {
-      display: grid;
-      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
-      gap: 2rem;
-      align-items: center;
-      padding: 2.5rem 1.6rem;
-      margin-bottom: 3.5rem;
-      border-radius: 1.5rem;
-      background: radial-gradient(circle at top left, #1d283a, #020617 55%);
-      border: 1px solid rgba(148, 163, 184, 0.5);
-    }
-
-    .hero-title {
-      font-size: clamp(1.9rem, 3.2vw, 2.4rem);
-      font-weight: 700;
-      margin-bottom: 0.6rem;
-    }
-
-    .hero-subtitle {
-      color: #9ca3af;
-      font-size: 0.95rem;
-      margin-bottom: 1.2rem;
-    }
-
-    .hero-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      padding: 0.25rem 0.6rem;
-      border-radius: 999px;
-      border: 1px solid rgba(94, 234, 212, 0.7);
-      font-size: 0.7rem;
-      color: #a5f3fc;
-      margin-bottom: 0.8rem;
-    }
-
-    .hero-pill-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 999px;
-      background: #4ade80;
-      box-shadow: 0 0 0 4px rgba(74, 222, 128, 0.25);
-    }
-
-    .hero-buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.7rem;
-      margin-top: 1.5rem;
-    }
-
-    .btn {
-      border-radius: 999px;
-      padding: 0.55rem 1.2rem;
-      font-size: 0.85rem;
-      border: 1px solid rgba(148, 163, 184, 0.6);
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      cursor: pointer;
-      background: transparent;
-    }
-
-    .btn-primary {
-      border: none;
-      background: linear-gradient(135deg, #22d3ee, #22c55e);
-      color: #020617;
-      font-weight: 600;
-    }
-
-    .btn:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.8);
-      transition: all 0.15s ease-out;
-    }
-
-    .hero-right {
-      border-radius: 1.1rem;
-      padding: 1.2rem;
-      background: radial-gradient(circle at top, rgba(56, 189, 248, 0.1), transparent 55%);
-      border: 1px solid rgba(148, 163, 184, 0.5);
-      font-size: 0.85rem;
-    }
-
-    .hero-right-title {
-      font-size: 0.9rem;
-      font-weight: 600;
-      margin-bottom: 0.7rem;
-    }
-
-    .hero-meta {
-      list-style: none;
-      display: grid;
-      gap: 0.35rem;
-      margin-top: 0.4rem;
-    }
-
-    .hero-meta span {
-      color: #9ca3af;
-      font-size: 0.8rem;
-    }
-
-    /* ---- About ---- */
-    .about-text {
-      max-width: 44rem;
-      font-size: 0.95rem;
-    }
-
-    .about-text p + p {
-      margin-top: 0.8rem;
-    }
-
-    /* ---- Skills ---- */
-    .skills-grid {
-      display: grid;
-      gap: 0.7rem;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    }
-
-    .skill-card {
-      border-radius: 0.8rem;
-      border: 1px solid rgba(148, 163, 184, 0.4);
-      padding: 0.8rem 0.9rem;
-      font-size: 0.85rem;
-      background: rgba(15, 23, 42, 0.6);
-    }
-
-    .skill-title {
-      font-weight: 600;
-      margin-bottom: 0.2rem;
-    }
-
-    .skill-items {
-      color: #9ca3af;
-      font-size: 0.8rem;
-    }
-
-    /* ---- Works ---- */
-    .works-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.1rem;
-    }
-
-    .work-card {
-      border-radius: 0.9rem;
-      border: 1px solid rgba(148, 163, 184, 0.45);
-      background: rgba(15, 23, 42, 0.75);
-      padding: 0.9rem 1rem 1rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.4rem;
-      font-size: 0.86rem;
-    }
-
-    .work-badge {
-      font-size: 0.7rem;
-      padding: 0.1rem 0.45rem;
-      border-radius: 999px;
-      border: 1px solid rgba(94, 234, 212, 0.7);
-      color: #5eead4;
-      display: inline-block;
-      margin-bottom: 0.1rem;
-    }
-
-    .work-title {
-      font-weight: 600;
-      font-size: 0.92rem;
-    }
-
-    .work-desc {
-      color: #9ca3af;
-    }
-
-    .work-meta {
-      margin-top: 0.3rem;
-      color: #9ca3af;
-      font-size: 0.78rem;
-    }
-
-    .work-links {
-      margin-top: 0.6rem;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      font-size: 0.78rem;
-    }
-
-    .work-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.3rem;
-      padding-bottom: 0.05rem;
-      border-bottom: 1px dashed rgba(148, 163, 184, 0.7);
-    }
-
-    .work-link-icon {
-      font-size: 0.85em;
-    }
-
-    /* ---- Contact ---- */
-    .contact-box {
-      border-radius: 1rem;
-      border: 1px solid rgba(148, 163, 184, 0.6);
-      padding: 1.4rem 1.6rem;
-      max-width: 40rem;
-      background: rgba(15, 23, 42, 0.8);
-    }
-
-    .contact-text {
-      font-size: 0.9rem;
-      color: #d1d5db;
-      margin-bottom: 0.8rem;
-    }
-
-    .contact-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.7rem;
-      font-size: 0.85rem;
-    }
-
-    .contact-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      padding: 0.3rem 0.8rem;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.7);
-    }
-
-    footer {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 0 1.4rem 2rem;
-      font-size: 0.75rem;
-      color: #6b7280;
-      display: flex;
-      justify-content: space-between;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    /* ---- Responsive ---- */
-    @media (max-width: 720px) {
-      .hero {
-        grid-template-columns: minmax(0, 1fr);
-        padding: 1.8rem 1.4rem;
-      }
-
-      .hero-right {
-        order: -1;
-      }
-
-      nav ul {
-        font-size: 0.8rem;
-        gap: 0.7rem;
-      }
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- 【編集箇所】タイトルと説明文 -->
+  <title>bravebird | Portfolio</title>
+  <meta name="description" content="bravebird のポートフォリオサイト。静岡大学 情報学部。自然言語処理（NLP）の研究に取り組んでいます。" />
+  
+  <!-- OGP (Open Graph Protocol) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="bravebird | Portfolio" />
+  <meta property="og:description" content="静岡大学 情報学部で自然言語処理（NLP）の研究に取り組んでいます。" />
+  <meta property="og:url" content="https://bravebird0914.github.io/" />
+  <meta property="og:site_name" content="bravebird Portfolio" />
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="bravebird | Portfolio" />
+  <meta name="twitter:description" content="静岡大学 情報学部で自然言語処理（NLP）の研究に取り組んでいます。" />
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  <header>
-    <div class="nav-inner">
-      <div class="brand">
-        <strong>BraveBird</strong>
-        <span>Portfolio</span>
+  <!-- ===============================================
+       サイドバーナビゲーション
+       ================================================ -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <!-- 【編集箇所】プロフィール画像 -->
+      <div class="profile-image-wrapper">
+        <img src="images/profile.svg" alt="Profile" class="profile-image">
+        <!-- プロフィール画像を変更する場合は、images/profile.jpg または images/profile.png などに置き換えてください -->
       </div>
-      <nav>
-        <ul>
-          <li><a href="#about">About</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#works">Works</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
+      
+      <!-- 【編集箇所】名前と肩書き -->
+      <h1 class="sidebar-title">bravebird</h1>
+      <p class="sidebar-subtitle">
+        Shizuoka University<br>
+        Faculty of Informatics<br>
+        NLP Researcher
+      </p>
     </div>
-  </header>
+    
+    <nav class="sidebar-nav">
+      <ul>
+        <!-- 【編集箇所】ナビゲーション項目 -->
+        <li><a href="#about">About</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    
+  </aside>
+  
+  <!-- Dark Mode Toggle -->
+  <button id="dark-mode-toggle" class="dark-mode-toggle" aria-label="ダークモード切り替え">
+    <span class="toggle-icon">
+      <!-- Moon Icon (Light Mode) -->
+      <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+      </svg>
+      <!-- Sun Icon (Dark Mode) -->
+      <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="display: none;">
+        <circle cx="12" cy="12" r="5"></circle>
+        <line x1="12" y1="1" x2="12" y2="3"></line>
+        <line x1="12" y1="21" x2="12" y2="23"></line>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+        <line x1="1" y1="12" x2="3" y2="12"></line>
+        <line x1="21" y1="12" x2="23" y2="12"></line>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+      </svg>
+    </span>
+  </button>
 
-  <main>
-    <!-- Hero -->
-    <section class="hero" aria-label="概要">
-      <div>
-        <div class="hero-pill">
-          <span class="hero-pill-dot"></span>
-          <span>Available for projects</span>
-        </div>
-        <h1 class="hero-title">吉田勇翔 / bravebird</h1>
-        <p class="hero-subtitle">
-          フロントエンドを中心に、UI の体験設計から実装までを行うエンジニアです。  
-          プロダクトの「伝わり方」と「使いやすさ」を両立させることを意識しています。
-        </p>
-        <div class="hero-buttons">
-          <a href="#works" class="btn btn-primary">作品を見る</a>
-          <a href="#contact" class="btn">お問い合わせ</a>
-        </div>
-      </div>
-      <aside class="hero-right">
-        <div class="hero-right-title">現在のフォーカス</div>
-        <p class="muted">
-          Web フロントエンド / UI 実装 / デザインとエンジニアリングの橋渡し。
-        </p>
-        <ul class="hero-meta">
-          <li><span>・興味領域：</span>プロダクト開発、デザインシステム、インタラクションデザイン</li>
-          <li><span>・主なスタック：</span>TypeScript / React / Next.js / Node.js</li>
-          <li><span>・好きなこと：</span>UI の細部調整、情報設計、パフォーマンスチューニング</li>
-        </ul>
-      </aside>
-    </section>
-
-    <!-- About -->
+  <!-- ===============================================
+       メインコンテンツ
+       ================================================ -->
+  <main class="main-content">
+    
+    <!-- Header Cover -->
+    <div class="header-cover"></div>
+    
+    <!-- About Section -->
     <section id="about">
       <h2 class="section-title">About</h2>
-      <div class="about-text">
-        <p>
-          吉田勇翔（BraveBird）と申します。ユーザーにとって「迷わず使える」インターフェースをつくることをテーマに、
-          主にフロントエンド領域で活動しています。
-        </p>
-        <p>
-          デザインと実装の両方に関わりながら、情報設計・コンポーネント設計・アクセシビリティなどを意識した UI を組み立てていくのが得意です。
-        </p>
-        <p class="muted">
-          ※ この自己紹介や文言はお好みで書き換えてください。
-        </p>
-      </div>
-    </section>
-
-    <!-- Skills -->
-    <section id="skills">
-      <h2 class="section-title">Skills</h2>
-      <p class="muted" style="margin-bottom: 0.8rem;">
-        実際のスキルセットに合わせて書き換えてください（仮で一般的なスタックを入れています）。
+      <!-- 【編集箇所】自己紹介文 -->
+      <p>
+        bravebird と申します。静岡大学 情報学部に在籍し、自然言語処理（NLP）の研究に取り組んでいます。
       </p>
-      <div class="skills-grid">
-        <div class="skill-card">
-          <div class="skill-title">Frontend</div>
-          <div class="skill-items">
-            TypeScript / JavaScript / React / Next.js / HTML / CSS(SCSS) / Tailwind CSS
-          </div>
-        </div>
-        <div class="skill-card">
-          <div class="skill-title">Backend & Infra</div>
-          <div class="skill-items">
-            Node.js / REST API / Prisma / PostgreSQL / Vercel / Firebase など
-          </div>
-        </div>
-        <div class="skill-card">
-          <div class="skill-title">Design</div>
-          <div class="skill-items">
-            Figma / UI デザイン / プロトタイピング / コンポーネント設計
-          </div>
-        </div>
-        <div class="skill-card">
-          <div class="skill-title">Others</div>
-          <div class="skill-items">
-            Git / GitHub / アジャイル開発 / ドキュメンテーション
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Works -->
-    <section id="works">
-      <h2 class="section-title">Works</h2>
-      <p class="muted" style="margin-bottom: 0.8rem;">
-        実際のプロジェクトごとにカードを増やして編集してください。
-        タイトル、説明、使用技術、GitHub / デモリンクを揃えておくと伝わりやすいです。
+      <p>
+        特に早押しクイズに特化したAIシステムの開発に力を入れており、クイズの問題文からリアルタイムで答えを推定する技術の研究を行っています。
       </p>
-      <div class="works-grid">
-        <!-- Work 1 -->
-        <article class="work-card">
-          <div class="work-badge">Web App</div>
-          <h3 class="work-title">プロジェクトタイトル1</h3>
-          <p class="work-desc">
-            どんな課題を解決するためのプロダクトなのか、簡潔に 2〜3 文で説明します。
-            役割（設計 / 実装 / デザインなど）もここに書いておくと分かりやすいです。
-          </p>
-          <p class="work-meta">
-            使用技術：Next.js / TypeScript / Tailwind CSS / etc...
-          </p>
-          <div class="work-links">
-            <a class="work-link" href="https://github.com/your-name/your-repo" target="_blank" rel="noreferrer">
-              <span class="work-link-icon">↗</span> GitHub
-            </a>
-            <a class="work-link" href="https://your-demo-url.example.com" target="_blank" rel="noreferrer">
-              <span class="work-link-icon">◎</span> デモサイト
-            </a>
-          </div>
-        </article>
+    </section>
 
-        <!-- Work 2 -->
-        <article class="work-card">
-          <div class="work-badge">UI Design</div>
-          <h3 class="work-title">プロジェクトタイトル2</h3>
-          <p class="work-desc">
-            デザイン寄りの案件であれば、ワイヤーフレーム・UI モック・プロトタイプなど、
-            自分がどこまで担当したかを明記すると、役割が伝わりやすくなります。
-          </p>
-          <p class="work-meta">
-            使用ツール：Figma / Prototyping / Design System
-          </p>
-          <div class="work-links">
-            <a class="work-link" href="#" target="_blank" rel="noreferrer">
-              <span class="work-link-icon">🖼</span> デザインプレビュー
-            </a>
-          </div>
-        </article>
-
-        <!-- Work 3 -->
-        <article class="work-card">
-          <div class="work-badge">Personal</div>
-          <h3 class="work-title">プロジェクトタイトル3</h3>
-          <p class="work-desc">
-            個人開発・学習用のアウトプットなども、完成度が高ければ十分ポートフォリオになります。
-            特にこだわったポイントや工夫した部分を書いておくと良いです。
-          </p>
-          <p class="work-meta">
-            使用技術：React / Node.js / etc...
-          </p>
-          <div class="work-links">
-            <a class="work-link" href="#" target="_blank" rel="noreferrer">
-              <span class="work-link-icon">↗</span> GitHub
-            </a>
-          </div>
-        </article>
+    <!-- Education Section -->
+    <section id="education">
+      <h2 class="section-title">Education</h2>
+      
+      <!-- 【編集箇所】学歴項目 -->
+      
+      <div class="experience-item">
+        <h3 class="experience-company">静岡大学 情報学部</h3>
+        <p class="experience-period">在籍中</p>
+        <p class="experience-role">学部生</p>
+        <p class="experience-description">
+          情報学部で自然言語処理（NLP）を中心とした研究に取り組んでいます。特に早押しクイズに特化したAIシステムの開発を行っています。
+        </p>
       </div>
     </section>
 
-    <!-- Contact -->
+    <!-- Research Section -->
+    <section id="research">
+      <h2 class="section-title">Research</h2>
+      
+      <!-- 【編集箇所】研究分野 -->
+      
+      <div class="publication-item">
+        <h3 class="publication-category">研究分野</h3>
+        <p class="publication-title">自然言語処理（NLP）</p>
+        <p class="experience-description">
+          自然言語処理の技術を用いて、人間の言語をコンピュータで理解・処理する研究に取り組んでいます。
+          特に、早押しクイズに特化したAIシステムの開発を通じて、リアルタイムでの質問応答システムの高度化を目指しています。
+        </p>
+      </div>
+
+      <div class="publication-item">
+        <h3 class="publication-category">研究テーマ</h3>
+        <p class="publication-title">早押しクイズ特化型AI「hayabusa-ai」</p>
+        <p class="experience-description">
+          早押しクイズに特化したAIシステムの開発を行っています。問題文が読み上げられている途中でも、
+          キーワードや文脈から答えを推定し、最適なタイミングでボタンを押す技術の研究を進めています。
+        </p>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+      <h2 class="section-title">Projects</h2>
+      
+      <!-- 【編集箇所】プロジェクト（必要に応じて追加・編集） -->
+      
+      <div class="project-item">
+        <h3 class="project-title">hayabusa-ai（早押しクイズ特化型AI）</h3>
+        <p class="project-tech">Python / NLP / Machine Learning</p>
+        <p class="project-description">
+          早押しクイズに特化したAIシステム。問題文が読み上げられている途中でも、キーワードや文脈から答えを推定し、
+          最適なタイミングでボタンを押す技術を実装しています。自然言語処理と機械学習を組み合わせた研究プロジェクトです。
+        </p>
+        <p class="project-links">
+          <a href="https://github.com/bravebird0914/llm-quiz-attribution" target="_blank">[GitHub]</a>
+        </p>
+      </div>
+
+      <div class="project-item">
+        <h3 class="project-title">ポートフォリオサイト</h3>
+        <p class="project-tech">HTML / CSS / JavaScript</p>
+        <p class="project-description">
+          このポートフォリオサイト自体も作品の一つです。アクアマリンをテーマカラーとした美しいデザインと、
+          ダークモード対応、スムーズなアニメーションを実装しました。
+        </p>
+        <p class="project-links">
+          <a href="https://github.com/bravebird0914/bravebird0914.github.io" target="_blank">[GitHub]</a>
+        </p>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
     <section id="contact">
       <h2 class="section-title">Contact</h2>
-      <div class="contact-box">
-        <p class="contact-text">
-          お仕事やコラボレーションのご相談、カジュアルなお話など、お気軽にご連絡ください。
+      
+      <!-- 【編集箇所】連絡先 -->
+      
+      <div class="experience-item">
+        <h3 class="experience-company">ポートフォリオサイト</h3>
+        <p class="project-links">
+          <a href="https://bravebird0914.github.io/" target="_blank">GitHub Pages版</a>
+          <a href="https://bravebird-portfolio.vercel.app/" target="_blank">Vercel版</a>
         </p>
-        <div class="contact-links">
-          <!-- メールアドレスはご自身のものに変更してください -->
-          <a class="contact-link" href="mailto:your.mail@example.com">
-            <span>📧</span>
-            <span>your.mail@example.com</span>
-          </a>
-          <!-- GitHub ユーザー名も変更してください -->
-          <a class="contact-link" href="https://github.com/your-github-id" target="_blank" rel="noreferrer">
-            <span>🐙</span>
-            <span>GitHub</span>
-          </a>
-          <!-- X (Twitter) など -->
-          <a class="contact-link" href="https://x.com/your_x_id" target="_blank" rel="noreferrer">
-            <span>✕</span>
-            <span>X (Twitter)</span>
-          </a>
-        </div>
+      </div>
+
+      <div class="experience-item">
+        <h3 class="experience-company">GitHub</h3>
+        <p class="project-links">
+          <a href="https://github.com/bravebird0914" target="_blank">@bravebird0914</a>
+        </p>
+      </div>
+
+      <div class="experience-item">
+        <h3 class="experience-company">Email</h3>
+        <p class="project-links">
+          <a href="mailto:yyoshida@kanolab.net">yyoshida@kanolab.net</a>
+        </p>
       </div>
     </section>
+
   </main>
 
-  <footer>
-    <span>© <span id="year"></span> bravebird</span>
-    <span class="muted">Built with HTML &amp; CSS on GitHub Pages</span>
-  </footer>
-
-  <script>
-    // フッターの年を自動更新（お好みで削除可）
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+  <script src="js/main.js"></script>
 </body>
 </html>
+

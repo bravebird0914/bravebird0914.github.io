@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- 【編集箇所】記事タイトルとdescription -->
+  <title>記事タイトル | bravebird Blog</title>
+  <meta name="description" content="記事の説明文をここに記入してください。" />
+  
+  <!-- スタイルシート -->
+  <link rel="stylesheet" href="../css/style.css" />
+  
+  <style>
+    /* ブログ記事ページ専用スタイル */
+    .blog-post {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 8rem 2rem 4rem;
+    }
+    
+    .blog-post-header {
+      margin-bottom: 3rem;
+    }
+    
+    .blog-post-meta {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+    
+    .blog-post-title {
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 700;
+      line-height: 1.3;
+      color: #0f172a;
+      margin-bottom: 1rem;
+    }
+    
+    .blog-post-image {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: linear-gradient(135deg, rgba(14, 165, 233, 0.1), rgba(6, 182, 212, 0.08));
+      border-radius: 1rem;
+      margin-bottom: 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #94a3b8;
+    }
+    
+    .blog-post-content {
+      font-size: 1.05rem;
+      line-height: 1.9;
+      color: #475569;
+    }
+    
+    .blog-post-content h2 {
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: #0f172a;
+      margin-top: 3rem;
+      margin-bottom: 1rem;
+    }
+    
+    .blog-post-content h3 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: #0f172a;
+      margin-top: 2rem;
+      margin-bottom: 0.8rem;
+    }
+    
+    .blog-post-content p {
+      margin-bottom: 1.5rem;
+    }
+    
+    .blog-post-content ul,
+    .blog-post-content ol {
+      margin: 1.5rem 0 1.5rem 2rem;
+    }
+    
+    .blog-post-content li {
+      margin-bottom: 0.5rem;
+    }
+    
+    .blog-post-content code {
+      background: rgba(14, 165, 233, 0.1);
+      padding: 0.2rem 0.5rem;
+      border-radius: 0.3rem;
+      font-family: 'Monaco', 'Menlo', monospace;
+      font-size: 0.9em;
+      color: #0284c7;
+    }
+    
+    .blog-post-content pre {
+      background: #f1f5f9;
+      padding: 1.5rem;
+      border-radius: 0.8rem;
+      overflow-x: auto;
+      margin: 2rem 0;
+      border: 1px solid rgba(226, 232, 240, 0.8);
+    }
+    
+    .blog-post-content pre code {
+      background: none;
+      padding: 0;
+      color: #1e293b;
+    }
+    
+    .blog-post-footer {
+      margin-top: 4rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(226, 232, 240, 0.8);
+    }
+    
+    .blog-back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #0ea5e9;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    
+    .blog-back-link:hover {
+      gap: 0.75rem;
+    }
+    
+    /* ダークモード */
+    body.dark-mode .blog-post-title {
+      color: #e5e7eb;
+    }
+    
+    body.dark-mode .blog-post-content {
+      color: #d1d5db;
+    }
+    
+    body.dark-mode .blog-post-content h2,
+    body.dark-mode .blog-post-content h3 {
+      color: #e5e7eb;
+    }
+    
+    body.dark-mode .blog-post-content pre {
+      background: rgba(15, 23, 42, 0.6);
+      border-color: rgba(148, 163, 184, 0.2);
+    }
+    
+    body.dark-mode .blog-post-content pre code {
+      color: #e5e7eb;
+    }
+    
+    body.dark-mode .blog-post-content code {
+      background: rgba(14, 165, 233, 0.15);
+      color: #60a5fa;
+    }
+    
+    body.dark-mode .blog-post-image {
+      background: linear-gradient(135deg, rgba(14, 165, 233, 0.2), rgba(6, 182, 212, 0.15));
+    }
+    
+    body.dark-mode .blog-post-footer {
+      border-top-color: rgba(148, 163, 184, 0.2);
+    }
+    
+    body.dark-mode .blog-back-link {
+      color: #60a5fa;
+    }
+  </style>
+</head>
+<body>
+  <!-- ===============================================
+       ヘッダー & ナビゲーション
+       ================================================ -->
+  <header>
+    <div class="nav-inner">
+      <div class="brand">
+        <strong>bravebird</strong>
+        <span class="brand-tag">Blog</span>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="../index.html#about">自己紹介</a></li>
+          <li><a href="../index.html#works">作品</a></li>
+          <li><a href="../index.html#blog">ブログ</a></li>
+          <li><a href="../index.html#contact">お問い合わせ</a></li>
+        </ul>
+      </nav>
+      <!-- ダークモードトグル -->
+      <button id="dark-mode-toggle" class="dark-mode-toggle" aria-label="ダークモード切り替え">
+        <span class="sun-icon">☀️</span>
+        <span class="moon-icon">🌙</span>
+      </button>
+      <!-- モバイルメニュートグル -->
+      <div class="menu-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===============================================
+       ブログ記事本文
+       ================================================ -->
+  <article class="blog-post">
+    <header class="blog-post-header">
+      <!-- 【編集箇所】日付とカテゴリー -->
+      <div class="blog-post-meta">
+        <span class="blog-date">2024年12月XX日</span>
+        <span class="blog-category">カテゴリー名</span>
+      </div>
+      <!-- 【編集箇所】記事タイトル -->
+      <h1 class="blog-post-title">記事タイトルをここに入力</h1>
+    </header>
+    
+    <!-- 【編集箇所】記事の画像 -->
+    <div class="blog-post-image">
+      <!-- 画像を追加する場合はコメントアウトを外す -->
+      <!-- <img src="../images/blog/your-image.jpg" alt="記事タイトル" /> -->
+      記事の画像
+    </div>
+    
+    <!-- 【編集箇所】記事本文 -->
+    <div class="blog-post-content">
+      <p>
+        記事の導入文をここに書きます。
+        読者の興味を引く内容で始めましょう。
+      </p>
+
+      <h2>見出し2（大見出し）</h2>
+      <p>
+        本文をここに書きます。
+      </p>
+      
+      <h3>見出し3（小見出し）</h3>
+      <p>
+        さらに詳しい内容を書きます。
+      </p>
+      
+      <!-- リスト例 -->
+      <ul>
+        <li>箇条書き項目1</li>
+        <li>箇条書き項目2</li>
+        <li>箇条書き項目3</li>
+      </ul>
+
+      <!-- コードブロック例 -->
+      <pre><code>// コード例
+function example() {
+  console.log('Hello, World!');
+}</code></pre>
+
+      <p>
+        インラインコードは <code>このように</code> 書きます。
+      </p>
+
+      <h2>まとめ</h2>
+      <p>
+        記事のまとめをここに書きます。
+      </p>
+    </div>
+
+    <footer class="blog-post-footer">
+      <a href="../index.html#blog" class="blog-back-link">
+        <span>←</span>
+        <span>ブログ一覧に戻る</span>
+      </a>
+    </footer>
+  </article>
+
+  <!-- フッター -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-links">
+        <a href="../index.html#about" class="footer-link">自己紹介</a>
+        <a href="../index.html#works" class="footer-link">作品</a>
+        <a href="../index.html#blog" class="footer-link">ブログ</a>
+        <a href="../index.html#contact" class="footer-link">お問い合わせ</a>
+      </div>
+      <p class="footer-text">
+        Built with ❤️ and modern web technologies
+      </p>
+      <p class="footer-copyright">
+        © <span id="year"></span> bravebird. All rights reserved.
+      </p>
+    </div>
+  </footer>
+
+  <!-- JavaScriptファイル -->
+  <script src="../js/main.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,463 @@
+/* ========================================
+   リセット & ベース設定
+======================================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  height: 100%;
+}
+
+body {
+  font-family: 'Georgia', 'Yu Mincho', 'YuMincho', 'Hiragino Mincho ProN', 
+    'Hiragino Mincho Pro', serif;
+  background: #ffffff;
+  color: #2d3748;
+  line-height: 1.8;
+  overflow-x: hidden;
+  min-height: 100%;
+  font-size: 16px;
+  display: flex;
+}
+
+a {
+  color: #3182ce;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: #2c5282;
+  text-decoration: underline;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+strong {
+  font-weight: 600;
+}
+
+/* ========================================
+   サイドバー
+======================================== */
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 280px;
+  padding: 3rem 2rem;
+  background: #ffffff;
+  border-right: 1px solid #e2e8f0;
+  overflow-y: auto;
+  z-index: 100;
+}
+
+.sidebar-header {
+  margin-bottom: 3rem;
+}
+
+.sidebar-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1a202c;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.02em;
+  line-height: 1.4;
+}
+
+.sidebar-subtitle {
+  font-size: 0.875rem;
+  color: #718096;
+  line-height: 1.6;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica', sans-serif;
+}
+
+.sidebar-nav ul {
+  list-style: none;
+}
+
+.sidebar-nav li {
+  margin-bottom: 0.5rem;
+}
+
+.sidebar-nav a {
+  color: #4a5568;
+  font-size: 0.95rem;
+  display: block;
+  padding: 0.5rem 0;
+  transition: color 0.2s ease;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica', sans-serif;
+  text-decoration: none;
+}
+
+.sidebar-nav a:hover {
+  color: #3182ce;
+  text-decoration: none;
+}
+
+/* ========================================
+   メインコンテンツ
+======================================== */
+.main-content {
+  margin-left: 280px;
+  padding: 3rem 4rem 4rem;
+  max-width: calc(800px + 280px);
+  min-height: 100vh;
+}
+
+section {
+  margin-bottom: 4rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+section:last-child {
+  border-bottom: none;
+}
+
+/* ========================================
+   セクションタイトル
+======================================== */
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1a202c;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.02em;
+}
+
+/* ========================================
+   自己紹介セクション
+======================================== */
+#about p {
+  margin-bottom: 1rem;
+}
+
+/* ========================================
+   経歴セクション
+======================================== */
+.experience-item {
+  margin-bottom: 2.5rem;
+}
+
+.experience-item:last-child {
+  margin-bottom: 0;
+}
+
+.experience-company {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1a202c;
+  margin-bottom: 0.25rem;
+}
+
+.experience-period {
+  font-size: 0.875rem;
+  color: #718096;
+  margin-bottom: 0.25rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.experience-role {
+  font-size: 0.95rem;
+  color: #4a5568;
+  margin-bottom: 0.5rem;
+  font-style: italic;
+}
+
+.experience-description {
+  color: #4a5568;
+  line-height: 1.7;
+}
+
+/* ========================================
+   研究発表セクション
+======================================== */
+.publication-category {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1a202c;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.publication-category:first-child {
+  margin-top: 0;
+}
+
+.publication-item {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #f7fafc;
+}
+
+.publication-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.publication-authors {
+  font-size: 0.95rem;
+  color: #2d3748;
+  margin-bottom: 0.25rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.publication-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1a202c;
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+}
+
+.publication-venue {
+  font-size: 0.875rem;
+  color: #718096;
+  margin-bottom: 0.5rem;
+  font-style: italic;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.publication-links {
+  font-size: 0.875rem;
+}
+
+.publication-links a {
+  margin-right: 0.75rem;
+}
+
+/* ========================================
+   プロジェクトセクション
+======================================== */
+.project-item {
+  margin-bottom: 2.5rem;
+}
+
+.project-item:last-child {
+  margin-bottom: 0;
+}
+
+.project-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1a202c;
+  margin-bottom: 0.25rem;
+}
+
+.project-tech {
+  font-size: 0.875rem;
+  color: #718096;
+  margin-bottom: 0.5rem;
+  font-family: 'Monaco', 'Menlo', 'Courier New', monospace;
+}
+
+.project-description {
+  color: #4a5568;
+  line-height: 1.7;
+  margin-bottom: 0.5rem;
+}
+
+.project-links {
+  font-size: 0.875rem;
+}
+
+.project-links a {
+  margin-right: 0.75rem;
+}
+
+/* ========================================
+   受賞歴セクション
+======================================== */
+.award-item {
+  margin-bottom: 1.5rem;
+}
+
+.award-item:last-child {
+  margin-bottom: 0;
+}
+
+.award-title {
+  font-size: 0.95rem;
+  color: #2d3748;
+  margin-bottom: 0.25rem;
+}
+
+.award-date {
+  font-size: 0.875rem;
+  color: #718096;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* ========================================
+   資格セクション
+======================================== */
+.certificate-item {
+  margin-bottom: 1.5rem;
+}
+
+.certificate-item:last-child {
+  margin-bottom: 0;
+}
+
+.certificate-title {
+  font-size: 0.95rem;
+  color: #2d3748;
+  margin-bottom: 0.25rem;
+}
+
+.certificate-date {
+  font-size: 0.875rem;
+  color: #718096;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* ========================================
+   ブログセクション
+======================================== */
+.blog-list {
+  margin-bottom: 1.5rem;
+}
+
+.blog-item {
+  margin-bottom: 1rem;
+}
+
+.blog-item:last-child {
+  margin-bottom: 0;
+}
+
+.blog-date {
+  font-size: 0.875rem;
+  color: #718096;
+  margin-bottom: 0.25rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.blog-title-link a {
+  font-size: 0.95rem;
+  color: #2d3748;
+  text-decoration: none;
+}
+
+.blog-title-link a:hover {
+  color: #3182ce;
+  text-decoration: underline;
+}
+
+/* ========================================
+   レスポンシブデザイン
+======================================== */
+@media (max-width: 1024px) {
+  .main-content {
+    padding: 3rem 3rem 4rem;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    display: block;
+  }
+
+  .sidebar {
+    position: static;
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid #e2e8f0;
+    padding: 2rem 1.5rem;
+  }
+
+  .sidebar-header {
+    margin-bottom: 2rem;
+  }
+
+  .sidebar-title {
+    font-size: 1.3rem;
+  }
+
+  .sidebar-nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+  }
+
+  .sidebar-nav li {
+    margin-bottom: 0;
+  }
+
+  .main-content {
+    margin-left: 0;
+    padding: 2rem 1.5rem 3rem;
+    max-width: 100%;
+  }
+
+  .section-title {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .sidebar {
+    padding: 1.5rem 1rem;
+  }
+
+  .main-content {
+    padding: 1.5rem 1rem 2rem;
+  }
+
+  .section-title {
+    font-size: 1.2rem;
+  }
+
+  .sidebar-nav ul {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+}
+
+/* ========================================
+   アクセシビリティ: 動きを減らす設定
+======================================== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* ========================================
+   印刷スタイル
+======================================== */
+@media print {
+  .sidebar-nav {
+    display: none;
+  }
+
+  .main-content {
+    margin-left: 0;
+  }
+
+  body {
+    font-size: 12pt;
+  }
+
+  section {
+    page-break-inside: avoid;
+  }
+}
+

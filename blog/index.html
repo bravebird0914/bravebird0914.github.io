@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ブログ | bravebird Portfolio</title>
+  <meta name="description" content="技術メモや日々の学びを記録しています。" />
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <!-- サイドバー -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <div class="profile-image-wrapper">
+        <img src="../images/profile.svg" alt="Profile" class="profile-image">
+      </div>
+      
+      <h1 class="sidebar-title">bravebird</h1>
+      <p class="sidebar-subtitle">
+        Shizuoka University<br>
+        Faculty of Informatics<br>
+        NLP Researcher
+      </p>
+    </div>
+    
+    <nav class="sidebar-nav">
+      <ul>
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../index.html#education">Education</a></li>
+        <li><a href="../index.html#research">Research</a></li>
+        <li><a href="../index.html#projects">Projects</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+    
+  </aside>
+  
+  <!-- Dark Mode Toggle -->
+  <button id="dark-mode-toggle" class="dark-mode-toggle" aria-label="ダークモード切り替え">
+    <span class="toggle-icon">
+      <!-- Moon Icon (Light Mode) -->
+      <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+      </svg>
+      <!-- Sun Icon (Dark Mode) -->
+      <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="display: none;">
+        <circle cx="12" cy="12" r="5"></circle>
+        <line x1="12" y1="1" x2="12" y2="3"></line>
+        <line x1="12" y1="21" x2="12" y2="23"></line>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+        <line x1="1" y1="12" x2="3" y2="12"></line>
+        <line x1="21" y1="12" x2="23" y2="12"></line>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+      </svg>
+    </span>
+  </button>
+
+  <!-- メインコンテンツ -->
+  <main class="main-content">
+    
+    <!-- Header Cover -->
+    <div class="header-cover"></div>
+    
+    <section id="blog-list">
+      <h1 class="section-title">All Blog Posts</h1>
+      
+      <div class="blog-list">
+        <!-- 記事1 -->
+        <div class="blog-item">
+          <p class="blog-date">2024年12月15日</p>
+          <p class="blog-title-link">
+            <a href="portfolio-creation.html">ポートフォリオサイトの作成で学んだこと</a>
+          </p>
+          <p style="color: #718096; font-size: 0.9rem; margin-top: 0.25rem;">
+            このポートフォリオサイトを作成する過程で学んだデザインのポイントやアニメーション実装のコツについてまとめました。
+          </p>
+        </div>
+
+        <!-- 記事2 -->
+        <div class="blog-item" style="margin-top: 2rem;">
+          <p class="blog-date">2024年12月10日</p>
+          <p class="blog-title-link">
+            <a href="nlp-trends.html">自然言語処理の最新動向</a>
+          </p>
+          <p style="color: #718096; font-size: 0.9rem; margin-top: 0.25rem;">
+            最近の自然言語処理分野における注目すべきトレンドや、研究で取り組んでいるテーマについて紹介します。
+          </p>
+        </div>
+
+        <!-- 記事3 -->
+        <div class="blog-item" style="margin-top: 2rem;">
+          <p class="blog-date">2024年12月5日</p>
+          <p class="blog-title-link">
+            <a href="react-typescript.html">React + TypeScriptでの型安全な開発</a>
+          </p>
+          <p style="color: #718096; font-size: 0.9rem; margin-top: 0.25rem;">
+            TypeScriptを活用したReact開発において、型安全性を高めるためのベストプラクティスを解説します。
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

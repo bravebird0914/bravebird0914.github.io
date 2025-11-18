@@ -1,0 +1,40 @@
+<svg width="1200" height="280" viewBox="0 0 1200 280" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="coverGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#7FFFD4;stop-opacity:0.6" />
+      <stop offset="50%" style="stop-color:#00CED1;stop-opacity:0.5" />
+      <stop offset="100%" style="stop-color:#48D1CC;stop-opacity:0.4" />
+    </linearGradient>
+    
+    <linearGradient id="overlayGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.15" />
+      <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1200" height="280" fill="url(#coverGradient)"/>
+  
+  <!-- Decorative circles -->
+  <circle cx="100" cy="100" r="60" fill="#ffffff" opacity="0.12"/>
+  <circle cx="1100" cy="180" r="80" fill="#ffffff" opacity="0.1"/>
+  <circle cx="600" cy="50" r="40" fill="#ffffff" opacity="0.14"/>
+  <circle cx="300" cy="220" r="50" fill="#ffffff" opacity="0.11"/>
+  <circle cx="950" cy="80" r="35" fill="#ffffff" opacity="0.13"/>
+  
+  <!-- Wavy pattern -->
+  <path d="M 0 140 Q 150 100 300 140 T 600 140 T 900 140 T 1200 140 L 1200 280 L 0 280 Z" 
+        fill="url(#overlayGradient)" opacity="0.4"/>
+  
+  <!-- Text -->
+  <text x="600" y="150" font-family="Inter, sans-serif" font-size="20" fill="#ffffff" 
+        text-anchor="middle" font-weight="300" opacity="0.95" letter-spacing="2">
+    Add Your Favorite Illustration Here
+  </text>
+  
+  <!-- Small decorative elements -->
+  <circle cx="550" cy="180" r="3" fill="#ffffff" opacity="0.7"/>
+  <circle cx="570" cy="185" r="2" fill="#ffffff" opacity="0.6"/>
+  <circle cx="630" cy="182" r="2.5" fill="#ffffff" opacity="0.8"/>
+  <circle cx="650" cy="178" r="2" fill="#ffffff" opacity="0.6"/>
+</svg>
