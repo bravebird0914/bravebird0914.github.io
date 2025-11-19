@@ -292,7 +292,7 @@ body {
 .current-date {
   position: fixed;
   top: 2rem;
-  right: 6rem;
+  right: 2rem;
   display: flex;
   align-items: center;
   gap: 0.4rem;
@@ -339,7 +339,7 @@ body {
 .dark-mode-toggle {
   position: fixed;
   top: 2rem;
-  right: 2rem;
+  right: 12rem;
   width: 44px;
   height: 44px;
   border-radius: 12px;
