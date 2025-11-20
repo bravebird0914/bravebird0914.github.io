@@ -212,6 +212,20 @@ body {
   transform: translateX(5px);
 }
 
+/* サブタイトル内のリンクスタイル */
+.subtitle-line a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.subtitle-line a:hover {
+  color: #00CED1;
+  text-decoration: underline;
+  text-decoration-color: rgba(127, 255, 212, 0.5);
+  text-underline-offset: 2px;
+}
+
 .subtitle-accent {
   display: block;
   font-weight: 600;
@@ -1467,6 +1481,15 @@ body.dark-mode .subtitle-line::before {
 
 body.dark-mode .subtitle-line:hover::before {
   color: #7FFFD4;
+}
+
+body.dark-mode .subtitle-line a {
+  color: #94a3b8;
+}
+
+body.dark-mode .subtitle-line a:hover {
+  color: #7FFFD4;
+  text-decoration-color: rgba(127, 255, 212, 0.5);
 }
 
 body.dark-mode .subtitle-accent {
