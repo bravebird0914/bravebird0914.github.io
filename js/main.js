@@ -164,7 +164,7 @@ const initParallax = () => {
 
 // スクロールアニメーションの観察
 const observeScrollAnimations = () => {
-  const animateElements = document.querySelectorAll('.experience-item, .project-item, .blog-item');
+  const animateElements = document.querySelectorAll('.experience-item, .project-item');
   
   const observerOptions = {
     root: null,
