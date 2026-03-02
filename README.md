@@ -63,7 +63,7 @@ bravebird0914.github.io/
 
 ## 📝 License
 
-© 2025 bravebird. All rights reserved.
+© 2026 bravebird. All rights reserved.
 
 ーーー
 ・git add .
