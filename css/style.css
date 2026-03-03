@@ -419,6 +419,23 @@ body {
   min-height: 100vh;
 }
 
+/* ========================================
+   フッター
+======================================== */
+.site-footer {
+  margin-top: 5rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(127, 255, 212, 0.2);
+  text-align: center;
+}
+
+.site-footer-text {
+  font-size: 0.85rem;
+  color: #718096;
+  letter-spacing: 0.06em;
+  font-family: 'Montserrat', 'Noto Sans JP', sans-serif;
+}
+
 section {
   margin-bottom: 5rem;
   padding-bottom: 2rem;
@@ -1837,6 +1854,14 @@ body.dark-mode .blog-post-content p {
 body.dark-mode .blog-post-meta,
 body.dark-mode .blog-post-title {
   color: #f1f5f9;
+}
+
+body.dark-mode .site-footer {
+  border-top-color: rgba(127, 255, 212, 0.2);
+}
+
+body.dark-mode .site-footer-text {
+  color: #94a3b8;
 }
 
 /* ========================================

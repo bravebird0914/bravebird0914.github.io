@@ -4,69 +4,95 @@
 
 // 日付と曜日の表示
 function updateCurrentDate() {
-  console.log('📅 updateCurrentDate called');
-  
   const now = new Date();
-  const year = now.getFullYear();
-  const month = String(now.getMonth() + 1).padStart(2, '0');
-  const day = String(now.getDate()).padStart(2, '0');
-  const weekdays = ['日', '月', '火', '水', '木', '金', '土'];
-  const weekday = weekdays[now.getDay()];
+  const timeZone = 'Asia/Tokyo';
+  const formatter = new Intl.DateTimeFormat('ja-JP', {
+    timeZone,
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    weekday: 'short'
+  });
+
+  const parts = formatter.formatToParts(now);
+  const values = {};
+  for (const p of parts) {
+    if (p.type !== 'literal') values[p.type] = p.value;
+  }
+
+  const year = values.year;
+  const month = values.month;
+  const day = values.day;
+  const weekday = values.weekday;
 
   const dateYear = document.querySelector('.date-year');
   const dateMonthDay = document.querySelector('.date-month-day');
   const dateWeekday = document.querySelector('.date-weekday');
-
-  console.log('Found elements:', { dateYear, dateMonthDay, dateWeekday });
-  console.log('Date values:', { year, month, day, weekday });
+  const footerText = document.getElementById('site-footer-text');
 
   if (dateYear) {
     dateYear.textContent = year;
-    console.log('✅ Year updated:', year);
-  } else {
-    console.log('❌ .date-year element not found');
   }
   
   if (dateMonthDay) {
     dateMonthDay.textContent = `${month}.${day}`;
-    console.log('✅ Month-Day updated:', `${month}.${day}`);
-  } else {
-    console.log('❌ .date-month-day element not found');
   }
   
   if (dateWeekday) {
     dateWeekday.textContent = weekday;
-    console.log('✅ Weekday updated:', weekday);
-  } else {
-    console.log('❌ .date-weekday element not found');
+  }
+
+  if (footerText) {
+    footerText.textContent = `${year}.${month}.${day} bravebird. All rights reserved.`;
   }
 }
 
 // ページ読み込み完了後に日付を更新
-console.log('🚀 main.js loaded');
+const isDev = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+if (isDev) console.log('🚀 main.js loaded');
 
 // DOMが完全に読み込まれてから実行
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', () => {
-    console.log('✅ DOMContentLoaded fired');
+    if (isDev) console.log('✅ DOMContentLoaded fired');
     updateCurrentDate();
+    startTokyoDailyUpdate();
   });
 } else {
-  console.log('✅ DOM already loaded');
+  if (isDev) console.log('✅ DOM already loaded');
   updateCurrentDate();
+  startTokyoDailyUpdate();
 }
 
-// 日付が変わったら更新（午前0時に更新）
-setTimeout(() => {
-  const now = new Date();
-  const tomorrow = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
-  const timeUntilMidnight = tomorrow - now;
-  setTimeout(() => {
-    updateCurrentDate();
-    // その後は24時間ごとに更新
-    setInterval(updateCurrentDate, 24 * 60 * 60 * 1000);
-  }, timeUntilMidnight);
-}, 100);
+// 日付が変わったら更新（東京時刻の午前0時）
+function startTokyoDailyUpdate() {
+  const scheduleNext = () => {
+    const now = new Date();
+    const timeZone = 'Asia/Tokyo';
+    const ymd = new Intl.DateTimeFormat('en-CA', {
+      timeZone,
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit'
+    }).format(now); // YYYY-MM-DD
+
+    const todayTokyoMidnight = new Date(`${ymd}T00:00:00+09:00`);
+    const nextTokyoMidnight = new Date(todayTokyoMidnight.getTime() + 24 * 60 * 60 * 1000);
+    const delay = Math.max(1000, nextTokyoMidnight.getTime() - now.getTime() + 250);
+
+    setTimeout(() => {
+      updateCurrentDate();
+      scheduleNext();
+    }, delay);
+  };
+
+  scheduleNext();
+
+  // スリープ復帰等で日付がずれても、表示に戻ったタイミングで補正
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) updateCurrentDate();
+  });
+}
 
 // スムーススクロール
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
