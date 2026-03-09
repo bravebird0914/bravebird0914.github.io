@@ -1294,6 +1294,18 @@ section:nth-child(8) { animation-delay: 0.8s; }
 }
 
 /* ========================================
+   サイドバートグル（モバイル用 details/summary）
+   PC では details/summary を完全に透過させる
+======================================== */
+.sidebar-toggle {
+  display: contents; /* PC: details 要素を無視してレイアウトに影響させない */
+}
+
+.sidebar-toggle-summary {
+  display: none; /* PC では非表示 */
+}
+
+/* ========================================
    レスポンシブデザイン
 ======================================== */
 @media (max-width: 1024px) {
@@ -1312,8 +1324,71 @@ section:nth-child(8) { animation-delay: 0.8s; }
     width: 100%;
     border-right: none;
     box-shadow: 0 2px 8px rgba(127, 255, 212, 0.12);
-    padding: 2rem 1.5rem;
-    padding-bottom: 1rem;
+    padding: 0;
+  }
+
+  /* モバイル: details をブロック要素として普通に扱う */
+  .sidebar-toggle {
+    display: block;
+  }
+
+  /* summary: タップ領域 */
+  .sidebar-toggle-summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+    background: transparent;
+  }
+
+  .sidebar-toggle-summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .sidebar-toggle-name {
+    font-family: 'Cormorant Garamond', 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 300;
+    letter-spacing: 0.05em;
+  }
+
+  .sidebar-toggle-name .name-first {
+    background: linear-gradient(135deg, #7FFFD4 0%, #00CED1 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .sidebar-toggle-name .name-second {
+    font-weight: 700;
+    color: #1a202c;
+    -webkit-text-fill-color: #1a202c;
+  }
+
+  /* 開閉アイコン（▼ / ▲） */
+  .sidebar-toggle-icon::before {
+    content: '▼';
+    font-size: 0.7rem;
+    color: #00CED1;
+    transition: transform 0.3s ease;
+    display: inline-block;
+  }
+
+  .sidebar-toggle[open] .sidebar-toggle-icon::before {
+    transform: rotate(180deg);
+  }
+
+  /* 展開されたコンテンツのパディング */
+  .sidebar-toggle .sidebar-header {
+    padding: 0 1.5rem 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .sidebar-toggle .sidebar-nav {
+    padding: 0 1.5rem 1rem;
   }
 
   .sidebar-header {
@@ -1463,6 +1538,13 @@ body.dark-mode .date-weekday {
 body.dark-mode .sidebar {
   background: rgba(15, 27, 42, 0.95);
   box-shadow: 2px 0 30px rgba(127, 255, 212, 0.15);
+}
+
+@media (max-width: 768px) {
+  body.dark-mode .sidebar-toggle-name .name-second {
+    color: #f1f5f9;
+    -webkit-text-fill-color: #f1f5f9;
+  }
 }
 
 body.dark-mode .sidebar-title {
