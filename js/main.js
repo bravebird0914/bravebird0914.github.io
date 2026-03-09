@@ -349,8 +349,33 @@ window.addEventListener('load', () => {
   observeScrollAnimations();
   addSparkleEffect();
   initCursorEffect();
+  initSidebarToggle();
   // initParallax(); // パララックスは少し重いので必要に応じて有効化
 });
+
+// モバイル用サイドバートグル
+const initSidebarToggle = () => {
+  const btn = document.querySelector('.sidebar-toggle-btn');
+  const body = document.querySelector('.sidebar-body');
+  if (!btn || !body) return;
+
+  const isMobile = () => window.matchMedia('(max-width: 768px)').matches;
+
+  btn.addEventListener('click', () => {
+    if (!isMobile()) return;
+    const isOpen = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', String(!isOpen));
+    body.classList.toggle('is-closed', isOpen);
+  });
+
+  // ウィンドウリサイズ時: PC幅になったら強制的に開く
+  window.addEventListener('resize', () => {
+    if (!isMobile()) {
+      btn.setAttribute('aria-expanded', 'true');
+      body.classList.remove('is-closed');
+    }
+  });
+};
 
 // 外部リンクを新しいタブで開く
 document.querySelectorAll('a[href^="http"]').forEach(link => {

@@ -36,14 +36,18 @@
        サイドバーナビゲーション
        ================================================ -->
   <aside class="sidebar">
-    <details class="sidebar-toggle" open>
-      <summary class="sidebar-toggle-summary">
-        <span class="sidebar-toggle-name">
-          <span class="name-first">brave</span><span class="name-second">bird</span>
-        </span>
-        <span class="sidebar-toggle-icon" aria-hidden="true"></span>
-      </summary>
+    <!-- モバイル専用トグルヘッダー（PCでは非表示） -->
+    <div class="sidebar-mobile-header">
+      <span class="sidebar-mobile-title">
+        <span class="name-first">brave</span><span class="name-second">bird</span>
+      </span>
+      <button class="sidebar-toggle-btn" aria-expanded="true" aria-controls="sidebar-body" aria-label="メニューを開閉">
+        <span class="sidebar-toggle-chevron" aria-hidden="true"></span>
+      </button>
+    </div>
 
+    <!-- PC では常時表示、モバイルではトグルで開閉 -->
+    <div class="sidebar-body" id="sidebar-body">
       <div class="sidebar-header">
         <!-- 【編集箇所】プロフィール画像 -->
         <div class="profile-image-wrapper">
@@ -79,8 +83,7 @@
           <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
-
-    </details>
+    </div>
   </aside>
   
   <!-- 日付表示 -->
