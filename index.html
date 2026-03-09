@@ -36,42 +36,36 @@
        サイドバーナビゲーション
        ================================================ -->
   <aside class="sidebar">
-    <!-- モバイル専用トグルヘッダー（PCでは非表示） -->
-    <div class="sidebar-mobile-header">
-      <span class="sidebar-mobile-title">
-        <span class="name-first">brave</span><span class="name-second">bird</span>
-      </span>
-      <button class="sidebar-toggle-btn" aria-expanded="true" aria-controls="sidebar-body" aria-label="メニューを開閉">
-        <span class="sidebar-toggle-chevron" aria-hidden="true"></span>
-      </button>
-    </div>
-
-    <!-- PC では常時表示、モバイルではトグルで開閉 -->
-    <div class="sidebar-body" id="sidebar-body">
-      <div class="sidebar-header">
-        <!-- 【編集箇所】プロフィール画像 -->
-        <div class="profile-image-wrapper">
-          <a href="#about" class="profile-image-link">
-            <img src="images/profile.png" alt="Profile" class="profile-image">
-          </a>
-        </div>
-        
-        <!-- 【編集箇所】名前と肩書き -->
-        <a href="#about" class="sidebar-title-link">
-          <h1 class="sidebar-title">
-            <span class="name-first">brave</span><span class="name-second">bird</span>
-          </h1>
+    <!-- 常時表示：プロフィール画像・名前・肩書き -->
+    <div class="sidebar-header">
+      <div class="profile-image-wrapper">
+        <a href="#about" class="profile-image-link">
+          <img src="images/profile.png" alt="Profile" class="profile-image">
         </a>
-        <p class="sidebar-subtitle">
-          <span class="subtitle-line"><a href="https://www.shizuoka.ac.jp/" target="_blank" rel="noopener noreferrer">Shizuoka University</a></span>
-          <span class="subtitle-line"><a href="https://www.inf.shizuoka.ac.jp/" target="_blank" rel="noopener noreferrer">Faculty of Informatics</a></span>
-          <span class="subtitle-accent">NLP Researcher</span>
-        </p>
       </div>
       
-      <nav class="sidebar-nav">
+      <a href="#about" class="sidebar-title-link">
+        <h1 class="sidebar-title">
+          <span class="name-first">brave</span><span class="name-second">bird</span>
+        </h1>
+      </a>
+      <p class="sidebar-subtitle">
+        <span class="subtitle-line"><a href="https://www.shizuoka.ac.jp/" target="_blank" rel="noopener noreferrer">Shizuoka University</a></span>
+        <span class="subtitle-line"><a href="https://www.inf.shizuoka.ac.jp/" target="_blank" rel="noopener noreferrer">Faculty of Informatics</a></span>
+        <span class="subtitle-accent">NLP Researcher</span>
+      </p>
+    </div>
+
+    <!-- ナビゲーション：モバイルではトグルで開閉 -->
+    <div class="sidebar-nav-wrapper">
+      <!-- モバイル専用トグルボタン（PCでは非表示） -->
+      <button class="sidebar-toggle-btn" aria-expanded="false" aria-controls="sidebar-nav-body" aria-label="ナビゲーションを開閉">
+        <span class="sidebar-toggle-label">Menu</span>
+        <span class="sidebar-toggle-chevron" aria-hidden="true"></span>
+      </button>
+
+      <nav class="sidebar-nav" id="sidebar-nav-body">
         <ul>
-          <!-- 【編集箇所】ナビゲーション項目 -->
           <li><a href="#about">About</a></li>
           <li><a href="#education">Education</a></li>
           <li><a href="#research">Research</a></li>

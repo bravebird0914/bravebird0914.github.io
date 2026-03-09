@@ -1297,14 +1297,14 @@ section:nth-child(8) { animation-delay: 0.8s; }
    サイドバートグル（モバイル専用）
 ======================================== */
 
-/* モバイルトグルヘッダー: PC では非表示 */
-.sidebar-mobile-header {
+/* トグルボタン: PC では非表示 */
+.sidebar-toggle-btn {
   display: none;
 }
 
-/* sidebar-body: PC では常時表示 */
-.sidebar-body {
-  /* PC: 高さ制限なし・常時表示 */
+/* ナビラッパー: 通常はそのまま */
+.sidebar-nav-wrapper {
+  /* PC: 通常表示 */
 }
 
 /* ========================================
@@ -1326,100 +1326,75 @@ section:nth-child(8) { animation-delay: 0.8s; }
     width: 100%;
     border-right: none;
     box-shadow: 0 2px 8px rgba(127, 255, 212, 0.12);
-    padding: 0;
-  }
-
-  /* モバイルトグルヘッダーを表示 */
-  .sidebar-mobile-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1rem 1.5rem;
-    cursor: pointer;
-  }
-
-  .sidebar-mobile-title {
-    font-family: 'Cormorant Garamond', 'Playfair Display', serif;
-    font-size: 1.5rem;
-    font-weight: 300;
-    letter-spacing: 0.05em;
-  }
-
-  .sidebar-mobile-title .name-first {
-    background: linear-gradient(135deg, #7FFFD4 0%, #00CED1 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  .sidebar-mobile-title .name-second {
-    font-weight: 700;
-    color: #1a202c;
-    -webkit-text-fill-color: #1a202c;
-  }
-
-  /* 開閉ボタン */
-  .sidebar-toggle-btn {
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0.25rem 0.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .sidebar-toggle-chevron {
-    display: inline-block;
-    width: 10px;
-    height: 10px;
-    border-right: 2px solid #00CED1;
-    border-bottom: 2px solid #00CED1;
-    transform: rotate(45deg);
-    transition: transform 0.3s ease;
-    margin-top: -4px;
-  }
-
-  /* 閉じているとき: ▼（下向き） */
-  .sidebar-toggle-btn[aria-expanded="false"] .sidebar-toggle-chevron {
-    transform: rotate(45deg);
-    margin-top: -4px;
-  }
-
-  /* 開いているとき: ▲（上向き） */
-  .sidebar-toggle-btn[aria-expanded="true"] .sidebar-toggle-chevron {
-    transform: rotate(-135deg);
-    margin-top: 4px;
-  }
-
-  /* sidebar-body: モバイルでの開閉アニメーション */
-  .sidebar-body {
-    overflow: hidden;
-    max-height: 1000px;
-    transition: max-height 0.35s ease, opacity 0.35s ease, padding 0.35s ease;
-    opacity: 1;
-    padding: 0 1.5rem 1rem;
-  }
-
-  .sidebar-body.is-closed {
-    max-height: 0;
-    opacity: 0;
-    padding-top: 0;
-    padding-bottom: 0;
+    padding: 2rem 1.5rem 1rem;
   }
 
   .sidebar-header {
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
   }
 
   .sidebar-title {
     font-size: 1.3rem;
   }
 
+  /* トグルボタンをナビ上部に表示 */
+  .sidebar-toggle-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(127, 255, 212, 0.08);
+    border: 1px solid rgba(127, 255, 212, 0.25);
+    border-radius: 8px;
+    cursor: pointer;
+    padding: 0.5rem 0.9rem;
+    margin-bottom: 0.5rem;
+    width: 100%;
+    text-align: left;
+  }
+
+  .sidebar-toggle-label {
+    font-size: 0.85rem;
+    color: #4a5568;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 0.05em;
+    flex: 1;
+  }
+
+  .sidebar-toggle-chevron {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-right: 2px solid #00CED1;
+    border-bottom: 2px solid #00CED1;
+    transition: transform 0.3s ease;
+    transform: rotate(45deg);
+    margin-top: -3px;
+    flex-shrink: 0;
+  }
+
+  .sidebar-toggle-btn[aria-expanded="true"] .sidebar-toggle-chevron {
+    transform: rotate(-135deg);
+    margin-top: 3px;
+  }
+
+  /* ナビ本体：デフォルトは閉じた状態 */
+  .sidebar-nav {
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transition: max-height 0.35s ease, opacity 0.25s ease;
+  }
+
+  .sidebar-nav.is-open {
+    max-height: 600px;
+    opacity: 1;
+  }
+
   .sidebar-nav ul {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem 1.5rem;
+    gap: 0.25rem 1rem;
+    padding-top: 0.25rem;
   }
 
   .sidebar-nav li {
@@ -1558,13 +1533,13 @@ body.dark-mode .sidebar {
 }
 
 @media (max-width: 768px) {
-  body.dark-mode .sidebar-mobile-title .name-second {
-    color: #f1f5f9;
-    -webkit-text-fill-color: #f1f5f9;
+  body.dark-mode .sidebar-toggle-btn {
+    background: rgba(127, 255, 212, 0.08);
+    border-color: rgba(127, 255, 212, 0.25);
   }
 
-  body.dark-mode .sidebar-toggle-btn {
-    color: #7FFFD4;
+  body.dark-mode .sidebar-toggle-label {
+    color: #cbd5e1;
   }
 
   body.dark-mode .sidebar-toggle-chevron {

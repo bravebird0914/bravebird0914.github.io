@@ -353,11 +353,11 @@ window.addEventListener('load', () => {
   // initParallax(); // パララックスは少し重いので必要に応じて有効化
 });
 
-// モバイル用サイドバートグル
+// モバイル用ナビゲーショントグル
 const initSidebarToggle = () => {
   const btn = document.querySelector('.sidebar-toggle-btn');
-  const body = document.querySelector('.sidebar-body');
-  if (!btn || !body) return;
+  const nav = document.getElementById('sidebar-nav-body');
+  if (!btn || !nav) return;
 
   const isMobile = () => window.matchMedia('(max-width: 768px)').matches;
 
@@ -365,14 +365,14 @@ const initSidebarToggle = () => {
     if (!isMobile()) return;
     const isOpen = btn.getAttribute('aria-expanded') === 'true';
     btn.setAttribute('aria-expanded', String(!isOpen));
-    body.classList.toggle('is-closed', isOpen);
+    nav.classList.toggle('is-open', !isOpen);
   });
 
-  // ウィンドウリサイズ時: PC幅になったら強制的に開く
+  // リサイズで PC 幅になったらナビを強制表示・状態リセット
   window.addEventListener('resize', () => {
     if (!isMobile()) {
-      btn.setAttribute('aria-expanded', 'true');
-      body.classList.remove('is-closed');
+      btn.setAttribute('aria-expanded', 'false');
+      nav.classList.remove('is-open');
     }
   });
 };
