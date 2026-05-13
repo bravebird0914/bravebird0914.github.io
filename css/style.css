@@ -80,7 +80,7 @@ body {
 }
 
 .profile-image-wrapper {
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
   display: flex;
   justify-content: center;
 }
@@ -96,8 +96,8 @@ body {
 }
 
 .profile-image {
-  width: 140px;
-  height: 140px;
+  width: 180px;
+  height: 180px;
   border-radius: 50%;
   object-fit: cover;
   border: 3px solid rgba(127, 255, 212, 0.3);
