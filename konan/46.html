@@ -22,7 +22,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Sans+JP:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="css/konan.css?v=5" />
+  <link rel="stylesheet" href="css/konan.css?v=6" />
 </head>
 <body class="dark-mode">
   <div class="sky" id="sky" aria-hidden="true"></div>
@@ -107,8 +107,8 @@
       function spawn() {
         var star = document.createElement('span');
         star.className = 'shooting-star';
-        star.style.left = (Math.random() * window.innerWidth * 0.85) + 'px';
-        star.style.top = (Math.random() * window.innerHeight * 0.45) + 'px';
+        star.style.left = (Math.random() * window.innerWidth) + 'px';
+        star.style.top = (Math.random() * window.innerHeight * 0.7) + 'px';
         var travel = 240 + Math.random() * 280;
         star.style.setProperty('--dx', travel + 'px');
         star.style.setProperty('--dy', (travel * 0.9) + 'px');
