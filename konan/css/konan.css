@@ -158,15 +158,18 @@ body {
   color: var(--accent-dark);
 }
 
-/* 締めの一言（大きく・目立たせる） */
+/* 締めの一言（大きく・目立たせる）
+   デスクトップではカードの左右余白いっぱいに広げ、1行で表示。
+   フォントは vw 連動で縮むため、狭い画面でもはみ出さない。 */
 .letter-emphasis {
-  margin-top: 0.9em;
+  margin: 0.9em -40px 0;
   text-align: center;
   font-family: 'Noto Sans JP', sans-serif;
   font-weight: 700;
-  font-size: clamp(1.6rem, 5.5vw, 2.1rem);
+  font-size: clamp(1.6rem, 5.3vw, 2.2rem);
   line-height: 1.5;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
   background: linear-gradient(90deg, var(--accent), var(--accent-dark));
   -webkit-background-clip: text;
   background-clip: text;
@@ -264,4 +267,10 @@ body.dark-mode .theme-toggle .sun-icon { display: block; }
   .letter-eyebrow { font-size: 1.3rem; }
   .letter-title { font-size: 1.14rem; }
   .letter-body { font-size: 0.98rem; }
+  .letter-emphasis {
+    margin-left: 0;
+    margin-right: 0;
+    white-space: normal;
+    font-size: clamp(1.35rem, 6.4vw, 1.7rem);
+  }
 }
