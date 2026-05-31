@@ -130,9 +130,9 @@ body {
   margin-bottom: 0;
 }
 
-/* 個別メッセージ（P.S.）ブロック */
+/* 個別メッセージ（P.S.）ブロック：カード最後に配置 */
 .letter-ps {
-  margin-top: 8px;
+  margin-top: 40px;
   padding: 22px 24px;
   background: linear-gradient(135deg, rgba(0, 206, 209, 0.08), rgba(32, 178, 170, 0.06));
   border: 1px solid var(--border);
@@ -158,14 +158,19 @@ body {
   color: var(--accent-dark);
 }
 
-/* 締めの一言 */
+/* 締めの一言（大きく・目立たせる） */
 .letter-emphasis {
-  margin-top: 0.4em;
+  margin-top: 0.9em;
   text-align: center;
   font-family: 'Noto Sans JP', sans-serif;
-  font-weight: 600;
-  font-size: 1.18rem;
-  letter-spacing: 0.03em;
+  font-weight: 700;
+  font-size: clamp(1.6rem, 5.5vw, 2.1rem);
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  background: linear-gradient(90deg, var(--accent), var(--accent-dark));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
   color: var(--accent-dark);
 }
 
@@ -175,14 +180,6 @@ body {
   line-height: 1.7;
 }
 
-.letter-signature .sig-affil {
-  display: block;
-  font-size: 0.82rem;
-  letter-spacing: 0.08em;
-  color: var(--text-soft);
-  margin-top: 4px;
-}
-
 .letter-signature .sig-role {
   display: block;
   font-size: 0.86rem;
@@ -190,12 +187,20 @@ body {
   color: var(--text-soft);
 }
 
+.letter-signature .sig-affil {
+  display: block;
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  color: var(--text-soft);
+}
+
 .letter-signature .sig-name {
   display: block;
-  font-size: 1.3rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
+  font-size: clamp(1.7rem, 4.5vw, 2.1rem);
+  font-weight: 700;
+  letter-spacing: 0.12em;
   color: var(--text);
+  margin-top: 10px;
 }
 
 /* ========================================
