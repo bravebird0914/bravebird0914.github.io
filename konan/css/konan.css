@@ -130,6 +130,34 @@ body {
   margin-bottom: 0;
 }
 
+/* 個別メッセージ（P.S.）ブロック */
+.letter-ps {
+  margin-top: 8px;
+  padding: 22px 24px;
+  background: linear-gradient(135deg, rgba(0, 206, 209, 0.08), rgba(32, 178, 170, 0.06));
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: 14px;
+  font-size: 0.98rem;
+  line-height: 1.9;
+}
+
+.letter-ps .ps-label {
+  display: inline-block;
+  font-family: 'Cormorant Garamond', 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 600;
+  font-size: 1.05rem;
+  letter-spacing: 0.06em;
+  color: var(--accent-dark);
+  margin-right: 6px;
+}
+
+.letter-ps .ps-names {
+  font-weight: 600;
+  color: var(--accent-dark);
+}
+
 .letter-signature {
   margin-top: 44px;
   text-align: right;
