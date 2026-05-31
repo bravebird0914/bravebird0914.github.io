@@ -158,10 +158,29 @@ body {
   color: var(--accent-dark);
 }
 
+/* 締めの一言 */
+.letter-emphasis {
+  margin-top: 0.4em;
+  text-align: center;
+  font-family: 'Noto Sans JP', sans-serif;
+  font-weight: 600;
+  font-size: 1.18rem;
+  letter-spacing: 0.03em;
+  color: var(--accent-dark);
+}
+
 .letter-signature {
   margin-top: 44px;
   text-align: right;
   line-height: 1.7;
+}
+
+.letter-signature .sig-affil {
+  display: block;
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  color: var(--text-soft);
+  margin-top: 4px;
 }
 
 .letter-signature .sig-role {
