@@ -22,9 +22,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Sans+JP:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="css/konan.css?v=3" />
+  <link rel="stylesheet" href="css/konan.css?v=4" />
 </head>
 <body>
+  <div class="sky" id="sky" aria-hidden="true"></div>
+
   <!-- ダークモード切り替え -->
   <button id="theme-toggle" class="theme-toggle" aria-label="ダークモード切り替え">
     <svg class="moon-icon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
@@ -88,6 +90,29 @@
         document.body.classList.toggle('dark-mode');
         localStorage.setItem('konan-theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
       });
+    })();
+
+    // 背景の流れ星
+    (function () {
+      var sky = document.getElementById('sky');
+      if (!sky || (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches)) return;
+      function spawn() {
+        var star = document.createElement('span');
+        star.className = 'shooting-star';
+        star.style.left = (Math.random() * window.innerWidth * 0.85) + 'px';
+        star.style.top = (Math.random() * window.innerHeight * 0.45) + 'px';
+        var travel = 240 + Math.random() * 280;
+        star.style.setProperty('--dx', travel + 'px');
+        star.style.setProperty('--dy', (travel * 0.9) + 'px');
+        star.style.animationDuration = (0.9 + Math.random() * 0.8) + 's';
+        sky.appendChild(star);
+        star.addEventListener('animationend', function () { star.remove(); });
+      }
+      function loop() {
+        spawn();
+        setTimeout(loop, 1600 + Math.random() * 3000);
+      }
+      setTimeout(loop, 700);
     })();
   </script>
 </body>
