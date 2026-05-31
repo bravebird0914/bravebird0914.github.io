@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>ありがとう — 浜松湖南高等学校 26 HR のみなさまへ</title>
+  <meta name="description" content="教育実習生・吉田勇翔から、浜松湖南高等学校 26 HR のみなさまへの感謝のメッセージです。" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="../images/profile.png" />
+  <link rel="apple-touch-icon" href="../images/profile.png" />
+
+  <!-- OGP -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="ありがとう — 浜松湖南高等学校 26 HR のみなさまへ" />
+  <meta property="og:description" content="教育実習生・吉田勇翔から、26 HR のみなさまへの感謝のメッセージです。" />
+  <meta property="og:url" content="https://bravebird0914.github.io/konan/38" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Sans+JP:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/konan.css" />
+</head>
+<body>
+  <!-- ダークモード切り替え -->
+  <button id="theme-toggle" class="theme-toggle" aria-label="ダークモード切り替え">
+    <svg class="moon-icon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+    <svg class="sun-icon" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </button>
+
+  <main class="letter">
+    <img src="../images/profile.png" alt="吉田勇翔" class="letter-mark" />
+
+    <p class="letter-eyebrow">Thank you</p>
+    <h1 class="letter-title">
+      浜松湖南高等学校<br />
+      <span class="hr-name">26</span> HR のみなさまへ
+    </h1>
+    <hr class="letter-divider" />
+
+    <div class="letter-body">
+      <p>
+        教育実習の期間中は、本当にありがとうございました。
+        みなさんと過ごした毎日は、私にとってかけがえのない宝物になりました。
+      </p>
+      <p>
+        授業で見せてくれた真剣なまなざし、休み時間の笑い声、ふとした瞬間にかけてくれた優しい言葉。
+        その一つひとつに、私の方が何度も励まされ、たくさんのことを教えてもらいました。
+      </p>
+
+      <!-- 【編集箇所】26 HR 固有のメッセージはここに -->
+
+      <p>
+        これからもみなさんが、自分らしく、のびのびと歩んでいけることを心から願っています。
+        いつか、どこかでまた会える日を楽しみにしています。
+      </p>
+      <p>
+        本当に、ありがとうございました。
+      </p>
+    </div>
+
+    <p class="letter-signature">
+      <span class="sig-role">教育実習生</span>
+      <span class="sig-name">吉田 勇翔</span>
+    </p>
+  </main>
+
+  <script>
+    (function () {
+      var btn = document.getElementById('theme-toggle');
+      var saved = localStorage.getItem('konan-theme');
+      if (saved === 'dark' ||
+          (saved === null && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.body.classList.add('dark-mode');
+      }
+      btn.addEventListener('click', function () {
+        document.body.classList.toggle('dark-mode');
+        localStorage.setItem('konan-theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
+      });
+    })();
+  </script>
+</body>
+</html>
