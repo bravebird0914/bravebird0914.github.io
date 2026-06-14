@@ -528,7 +528,7 @@ section:nth-child(8) { animation-delay: 0.8s; }
 }
 
 .intro-text {
-  font-size: 1.15rem;
+  font-size: 1.25rem;
   line-height: 2;
   position: relative;
   padding-left: 1.5rem;
@@ -549,15 +549,17 @@ section:nth-child(8) { animation-delay: 0.8s; }
 
 .name-highlight {
   font-weight: 600;
-  color: #00CED1;
+  color: #1a202c;
   position: relative;
   display: inline-block;
   padding: 0 0.3rem;
-  background: linear-gradient(180deg, transparent 60%, rgba(127, 255, 212, 0.2) 60%);
+  background: linear-gradient(180deg, transparent 60%, rgba(127, 255, 212, 0.15) 60%);
   transition: all 0.3s ease;
+  cursor: default;
 }
 
 .name-highlight:hover {
+  color: #00CED1;
   background: linear-gradient(180deg, transparent 50%, rgba(127, 255, 212, 0.4) 50%);
   transform: translateY(-2px);
 }
@@ -1665,11 +1667,12 @@ body.dark-mode .intro-text::before {
 }
 
 body.dark-mode .name-highlight {
-  color: #7FFFD4;
-  background: linear-gradient(180deg, transparent 60%, rgba(127, 255, 212, 0.15) 60%);
+  color: #e2e8f0;
+  background: linear-gradient(180deg, transparent 60%, rgba(127, 255, 212, 0.1) 60%);
 }
 
 body.dark-mode .name-highlight:hover {
+  color: #7FFFD4;
   background: linear-gradient(180deg, transparent 50%, rgba(127, 255, 212, 0.25) 50%);
 }
 
