@@ -2,8 +2,6 @@
 // エレガントなポートフォリオサイト用JavaScript
 // ========================================
 
-const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
 // 日付と曜日の表示
 function updateCurrentDate() {
   const now = new Date();
@@ -150,13 +148,32 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     e.preventDefault();
     
     target.scrollIntoView({
-      behavior: prefersReducedMotion ? 'auto' : 'smooth',
+      behavior: 'smooth',
       block: 'start'
     });
 
     // URLを更新
     history.pushState(null, '', href);
   });
+});
+
+// 外部ページからのハッシュリンク（#blog等）でのスクロール位置調整
+window.addEventListener('load', () => {
+  if (window.location.hash) {
+    const target = document.querySelector(window.location.hash);
+    if (target) {
+      // 少し遅延させてからスクロール（ページ読み込み完了を待つ）
+      setTimeout(() => {
+        const offset = 100; // 100px上にオフセット
+        const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - offset;
+        
+        window.scrollTo({
+          top: targetPosition,
+          behavior: 'smooth'
+        });
+      }, 100);
+    }
+  }
 });
 
 // アクティブなナビゲーション項目を強調表示
@@ -193,6 +210,112 @@ const observeNavigation = () => {
   sections.forEach(section => observer.observe(section));
 };
 
+// パララックス効果
+const initParallax = () => {
+  const mainContent = document.querySelector('.main-content');
+  
+  if (!mainContent) return;
+  
+  mainContent.addEventListener('scroll', () => {
+    const scrolled = mainContent.scrollTop;
+    const items = document.querySelectorAll('.experience-item, .project-item, .publication-item');
+    
+    items.forEach((item, index) => {
+      const speed = 0.05;
+      const yPos = -(scrolled * speed * (index % 3));
+      item.style.transform = `translateY(${yPos}px)`;
+    });
+  });
+};
+
+// スクロールアニメーションの観察
+const observeScrollAnimations = () => {
+  const animateElements = document.querySelectorAll('.experience-item, .project-item');
+  
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.1
+  };
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, index) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }, index * 50);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+  
+  animateElements.forEach(element => {
+    element.style.opacity = '0';
+    element.style.transform = 'translateY(20px)';
+    element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(element);
+  });
+};
+
+// サイドバータイトルのキラキラ効果
+const addSparkleEffect = () => {
+  const title = document.querySelector('.sidebar-title');
+  
+  if (!title) return;
+  
+  title.addEventListener('mouseenter', () => {
+    title.style.animation = 'sparkle 0.6s ease';
+  });
+  
+  title.addEventListener('animationend', () => {
+    title.style.animation = '';
+  });
+};
+
+// カーソルに追従する微妙なエフェクト
+const initCursorEffect = () => {
+  let mouseX = 0;
+  let mouseY = 0;
+  let ballX = 0;
+  let ballY = 0;
+  let speed = 0.1;
+  
+  document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+  });
+  
+  function animate() {
+    let distX = mouseX - ballX;
+    let distY = mouseY - ballY;
+    
+    ballX += distX * speed;
+    ballY += distY * speed;
+    
+    // 微妙なカラー変更エフェクト
+    const items = document.querySelectorAll('.experience-item, .project-item');
+    items.forEach(item => {
+      const rect = item.getBoundingClientRect();
+      const centerX = rect.left + rect.width / 2;
+      const centerY = rect.top + rect.height / 2;
+      
+      const distance = Math.sqrt(
+        Math.pow(centerX - ballX, 2) + Math.pow(centerY - ballY, 2)
+      );
+      
+      if (distance < 200) {
+        const intensity = 1 - distance / 200;
+        item.style.borderColor = `rgba(127, 255, 212, ${0.15 + intensity * 0.3})`;
+      }
+    });
+    
+    requestAnimationFrame(animate);
+  }
+  
+  animate();
+};
+
 // ダークモード切り替え
 const initDarkModeToggle = () => {
   const toggle = document.getElementById('dark-mode-toggle');
@@ -202,7 +325,6 @@ const initDarkModeToggle = () => {
   
   // アイコン切り替え関数
   const updateIcon = (isDark) => {
-    toggle.setAttribute('aria-pressed', String(isDark));
     if (isDark) {
       moonIcon.style.display = 'none';
       sunIcon.style.display = 'block';
@@ -254,7 +376,7 @@ window.addEventListener('load', () => {
     if (target) {
       setTimeout(() => {
         target.scrollIntoView({
-          behavior: prefersReducedMotion ? 'auto' : 'smooth',
+          behavior: 'smooth',
           block: 'start'
         });
       }, 100);
@@ -264,7 +386,11 @@ window.addEventListener('load', () => {
   // 初期化
   initDarkModeToggle();
   observeNavigation();
+  observeScrollAnimations();
+  addSparkleEffect();
+  initCursorEffect();
   initSidebarToggle();
+  // initParallax(); // パララックスは少し重いので必要に応じて有効化
 });
 
 // モバイル用ナビゲーショントグル
@@ -280,14 +406,6 @@ const initSidebarToggle = () => {
     const isOpen = btn.getAttribute('aria-expanded') === 'true';
     btn.setAttribute('aria-expanded', String(!isOpen));
     nav.classList.toggle('is-open', !isOpen);
-  });
-
-  nav.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      if (!isMobile()) return;
-      btn.setAttribute('aria-expanded', 'false');
-      nav.classList.remove('is-open');
-    });
   });
 
   // リサイズで PC 幅になったらナビを強制表示・状態リセット
@@ -306,6 +424,16 @@ document.querySelectorAll('a[href^="http"]').forEach(link => {
     link.setAttribute('rel', 'noopener noreferrer');
   }
 });
+
+// スパークルアニメーション（CSS用）
+const style = document.createElement('style');
+style.textContent = `
+  @keyframes sparkle {
+    0%, 100% { filter: brightness(1) drop-shadow(0 0 0 transparent); }
+    50% { filter: brightness(1.2) drop-shadow(0 0 8px rgba(127, 255, 212, 0.5)); }
+  }
+`;
+document.head.appendChild(style);
 
 // デバッグ用
 if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
