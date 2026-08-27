@@ -4,9 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <!-- 【編集箇所】タイトルと説明文 -->
-  <title>bravebird | Portfolio</title>
-  <meta name="description" content="bravebird のポートフォリオサイト。静岡大学 情報学部。自然言語処理（NLP）の研究に取り組んでいます。" />
+  <title>吉田勇翔 | NLP Researcher &amp; Full-stack Engineer</title>
+  <meta name="description" content="吉田勇翔のポートフォリオ。静岡大学 狩野研究室で自然言語処理を研究し、フルスタックエンジニアとしてプロダクト開発にも取り組んでいます。" />
   
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="images/profile.png" />
@@ -14,24 +13,27 @@
   
   <!-- OGP (Open Graph Protocol) -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="bravebird | Portfolio" />
-  <meta property="og:description" content="静岡大学 情報学部で自然言語処理（NLP）の研究に取り組んでいます。" />
+  <meta property="og:title" content="吉田勇翔 | NLP Researcher &amp; Full-stack Engineer" />
+  <meta property="og:description" content="自然言語処理の研究とプロダクト開発に取り組む、吉田勇翔のポートフォリオ。" />
   <meta property="og:url" content="https://bravebird0914.github.io/" />
-  <meta property="og:site_name" content="bravebird Portfolio" />
+  <meta property="og:site_name" content="吉田勇翔 Portfolio" />
+  <meta property="og:image" content="https://bravebird0914.github.io/images/profile.png" />
   
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="bravebird | Portfolio" />
-  <meta name="twitter:description" content="静岡大学 情報学部で自然言語処理（NLP）の研究に取り組んでいます。" />
+  <meta name="twitter:title" content="吉田勇翔 | NLP Researcher &amp; Full-stack Engineer" />
+  <meta name="twitter:description" content="自然言語処理の研究とプロダクト開発に取り組む、吉田勇翔のポートフォリオ。" />
+  <meta name="twitter:image" content="https://bravebird0914.github.io/images/profile.png" />
   
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Montserrat:wght@200;300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;600;700&family=Cormorant+Upright:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="css/style.css?v=20260828-3" />
+  <link rel="stylesheet" href="css/style.css?v=20260828-4" />
 </head>
 <body>
+  <a class="skip-link" href="#main-content">メインコンテンツへ</a>
   <!-- ===============================================
        サイドバーナビゲーション
        ================================================ -->
@@ -43,6 +45,9 @@
           <img src="images/profile.png" alt="Profile" class="profile-image">
         </a>
       </div>
+
+      <p class="sidebar-name">吉田 勇翔</p>
+      <p class="sidebar-handle">bravebird</p>
       
       <p class="sidebar-subtitle">
         <span class="subtitle-line"><a href="https://www.shizuoka.ac.jp/" target="_blank" rel="noopener noreferrer">Shizuoka University</a></span>
@@ -62,15 +67,11 @@
       <nav class="sidebar-nav" id="sidebar-nav-body">
         <ul>
           <li><a href="#about">About</a></li>
-          <li><a href="#education">Education</a></li>
+          <li><a href="#highlights">Highlights</a></li>
           <li><a href="#experience">Experience</a></li>
           <li><a href="#research">Research</a></li>
-          <li><a href="#supervisor">Supervisor</a></li>
-          <li><a href="#collaborators">Collaborators</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#lontra">lontra</a></li>
-          <li><a href="#hayabusa">hayabusa</a></li>
           <li><a href="#publications">Publications</a></li>
+          <li><a href="#projects">Projects &amp; Activities</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
@@ -121,31 +122,44 @@
   <!-- ===============================================
        メインコンテンツ
        ================================================ -->
-  <main class="main-content">
+  <main class="main-content" id="main-content">
     
     <!-- About Section -->
     <section id="about">
-      <h2 class="section-title"><span class="title-text">About</span></h2>
-      <!-- 【編集箇所】自己紹介文 -->
+      <p class="hero-kicker">Portfolio / bravebird</p>
+      <h1 class="hero-name"><ruby>吉田 勇翔<rp>（</rp><rt>よしだ ゆうと</rt><rp>）</rp></ruby></h1>
+      <p class="hero-role">NLP Researcher &amp; Full-stack Engineer</p>
       <p class="intro-text">
-        <span class="name-highlight"><ruby>吉田勇翔<rp>（</rp><rt>よしだ ゆうと</rt><rp>）</rp></ruby></span> です。<br />
-        静岡大学 情報学部 行動情報学科の<a href="https://kanolab.net/" target="_blank" rel="noopener noreferrer">狩野研究室</a>に所属し、自然言語処理（NLP）の研究に取り組んでいます。
+        静岡大学 情報学部 行動情報学科の<a href="https://kanolab.net/" target="_blank" rel="noopener noreferrer">狩野研究室</a>で自然言語処理を研究しています。
+        早押しクイズにおける人間の認知を再現するAIと、LLMによる比喩の生成・同定が主なテーマです。
+        研究と並行して、フルスタックエンジニアとしてプロダクト開発にも携わっています。
       </p>
+      <div class="hero-actions" aria-label="主要ページへのリンク">
+        <a href="#research">研究を見る</a>
+        <a href="#publications">研究成果を見る</a>
+        <a href="#contact">連絡する</a>
+      </div>
     </section>
 
-    <!-- Education Section -->
-    <section id="education">
-      <h2 class="section-title"><span class="title-text">Education</span></h2>
-      
-      <!-- 【編集箇所】学歴項目 -->
-      
-      <div class="experience-item">
-        <h3 class="experience-company">静岡大学 情報学部</h3>
-        <p class="experience-period">在籍中</p>
-        <p class="experience-role">学部生</p>
-        <p class="experience-description">
-          自然言語処理を中心に研究しています。
-        </p>
+    <!-- Highlights Section -->
+    <section id="highlights">
+      <h2 class="section-title"><span class="title-text">Highlights</span></h2>
+      <div class="highlights-grid">
+        <a class="highlight-card" href="#research">
+          <span class="highlight-label">Research</span>
+          <strong>hayabusa</strong>
+          <span>人間の認知過程を再現する早押しクイズ特化型AI</span>
+        </a>
+        <a class="highlight-card" href="#publications">
+          <span class="highlight-label">Publication</span>
+          <strong>LLMと比喩</strong>
+          <span>比喩の生成・同定に関する研究と書籍章</span>
+        </a>
+        <a class="highlight-card" href="#experience">
+          <span class="highlight-label">Engineering</span>
+          <strong>Full-stack Development</strong>
+          <span>研究と実務を横断したプロダクト開発</span>
+        </a>
       </div>
     </section>
 
@@ -154,20 +168,20 @@
       <h2 class="section-title"><span class="title-text">Experience</span></h2>
 
       <div class="experience-item">
-        <h3 class="experience-company">人工知能学会</h3>
-        <p class="experience-period">2026年 – 現在</p>
-        <p class="experience-role">学生編集委員</p>
-        <p class="experience-description">
-          学生編集委員として活動しています。
-        </p>
-      </div>
-
-      <div class="experience-item">
         <h3 class="experience-company">株式会社M&amp;Tラーニング</h3>
         <p class="experience-period">2026年1月 – 現在</p>
         <p class="experience-role">フルスタックエンジニア</p>
         <p class="experience-description">
           フルスタックエンジニアとして、プロダクト開発に携わっています。
+        </p>
+      </div>
+
+      <div class="experience-item">
+        <h3 class="experience-company">人工知能学会</h3>
+        <p class="experience-period">2026年 – 現在</p>
+        <p class="experience-role">学生編集委員</p>
+        <p class="experience-description">
+          学生編集委員として、学術コミュニティの編集活動に参加しています。
         </p>
       </div>
     </section>
@@ -179,7 +193,7 @@
       <!-- 【編集箇所】研究分野 -->
       
       <div class="publication-item">
-        <h3 class="publication-category">研究分野</h3>
+        <h3 class="publication-category">Research Interests</h3>
         <p class="publication-title">自然言語処理（NLP）</p>
         <p class="experience-description">
           文章理解・質問応答（QA）・生成を中心に研究しています。
@@ -187,16 +201,20 @@
       </div>
 
       <div class="publication-item">
-        <h3 class="publication-category">研究テーマ</h3>
+        <h3 class="publication-category">Current Work</h3>
         <p class="publication-title">早押しクイズ特化型AI「hayabusa-ai」</p>
         <p class="experience-description">
           早押しクイズに特化したAIシステムの開発を行っています。問題文が読み上げられている途中でも、
           キーワードや文脈から答えを推定し、最適なタイミングでボタンを押す技術の研究を進めています。
         </p>
+        <p class="publication-links">
+          <a href="hayabusa/index.html">[Official Site]</a>
+          <a href="https://pub.confit.atlas.jp/ja/event/jsai2026/presentation/4L5-GS-1b-04" target="_blank" rel="noopener noreferrer">[JSAI2026]</a>
+        </p>
       </div>
 
       <div class="publication-item">
-        <h3 class="publication-category">研究テーマ</h3>
+        <h3 class="publication-category">Related Work</h3>
         <p class="publication-title">LLMと比喩：キャッチコピー生成と比喩構造同定</p>
         <p class="experience-description">
           GPT系の大規模言語モデル（LLM）が、広告表現で重視される<span class="keyword-highlight">比喩</span>を「生成タスク」と「同定タスク」の両面からどのように扱えるかを検証しました。
@@ -204,89 +222,93 @@
           また、文章中の比喩表現から<span class="keyword-highlight">被喩辞／喩辞</span>を特定するため、定量的に評価可能とした同定タスクも実施しました。
         </p>
       </div>
-    </section>
 
-    <!-- Supervisor Section -->
-    <section id="supervisor">
-      <h2 class="section-title"><span class="title-text">Supervisor</span></h2>
-      
-      <div class="collaborators-grid">
-        
-        <div class="collaborator-card">
+      <div class="people-section">
+        <h3 class="subsection-title">People</h3>
+
+        <article class="collaborator-card supervisor-card">
+          <div class="people-role-badge">Principal Supervisor / 指導教員</div>
           <div class="collaborator-header">
-            <div class="collaborator-icon">
+            <div class="collaborator-icon" aria-hidden="true">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
                 <circle cx="12" cy="7" r="4"></circle>
               </svg>
             </div>
             <div class="collaborator-info">
-              <h3 class="collaborator-name">狩野 芳伸 <span class="collaborator-title">先生</span></h3>
+              <h4 class="collaborator-name">狩野 芳伸 <span class="collaborator-title">先生</span></h4>
+              <p class="collaborator-affiliation">静岡大学 情報学部・狩野研究室</p>
             </div>
           </div>
-          <p class="collaborator-affiliation">静岡大学 情報学部</p>
-          <p class="collaborator-description">自然言語処理</p>
-          <a href="https://kanolab.net/kano/index.ja.html" target="_blank" class="collaborator-link">
-            <span>Website</span>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <line x1="7" y1="17" x2="17" y2="7"></line>
-              <polyline points="7 7 17 7 17 17"></polyline>
-            </svg>
-          </a>
-        </div>
+          <p class="collaborator-description">自然言語処理、対話システム、テキストマイニング、人工知能</p>
+          <div class="people-links">
+            <a href="https://kanolab.net/" target="_blank" rel="noopener noreferrer">研究室 Website</a>
+            <a href="https://kanolab.net/kano/index.ja.html" target="_blank" rel="noopener noreferrer">Profile</a>
+          </div>
+        </article>
 
-      </div>
-    </section>
-
-    <!-- Collaborators Section -->
-    <section id="collaborators">
-      <h2 class="section-title"><span class="title-text">Collaborators</span></h2>
-      
-      <div class="collaborators-grid">
-        
-        <div class="collaborator-card">
+        <article class="collaborator-card research-collaborator-card">
+          <div class="people-role-badge">Research Collaborator / 共同研究者</div>
           <div class="collaborator-header">
-            <div class="collaborator-icon">
+            <div class="collaborator-icon" aria-hidden="true">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
                 <circle cx="12" cy="7" r="4"></circle>
               </svg>
             </div>
             <div class="collaborator-info">
-              <h3 class="collaborator-name">白砂 大 <span class="collaborator-title">先生</span></h3>
+              <h4 class="collaborator-name">白砂 大 <span class="collaborator-title">先生</span></h4>
+              <p class="collaborator-affiliation">静岡大学 情報学部</p>
             </div>
           </div>
-          <p class="collaborator-affiliation">静岡大学 情報学部</p>
           <p class="collaborator-description">認知科学、意思決定科学、行動経済学</p>
-          <a href="https://sites.google.com/view/masaru-shirasuna/home" target="_blank" class="collaborator-link">
-            <span>Website</span>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <line x1="7" y1="17" x2="17" y2="7"></line>
-              <polyline points="7 7 17 7 17 17"></polyline>
-            </svg>
-          </a>
-        </div>
-
+          <div class="people-links">
+            <a href="https://sites.google.com/view/masaru-shirasuna/home" target="_blank" rel="noopener noreferrer">Website</a>
+          </div>
+        </article>
       </div>
+    </section>
+
+    <!-- Publications Section -->
+    <section id="publications">
+      <h2 class="section-title"><span class="title-text">Publications</span></h2>
+
+      <article class="publication-item">
+        <h3 class="publication-category">Conference Paper</h3>
+        <p class="publication-title">早押しクイズにおける人間の認知過程を再現した大規模言語モデルに基づくシステムの構築</p>
+        <p class="publication-authors"><strong>吉田 勇翔</strong>、白砂 大、狩野 芳伸</p>
+        <p class="publication-venue">第40回人工知能学会全国大会（JSAI2026），2026年6月</p>
+        <p class="publication-links">
+          <a href="https://pub.confit.atlas.jp/ja/event/jsai2026/presentation/4L5-GS-1b-04" target="_blank" rel="noopener noreferrer">[Conference Page]</a>
+        </p>
+      </article>
+
+      <article class="publication-item">
+        <h3 class="publication-category">Preprint</h3>
+        <p class="publication-title">Attempts to investigate what words trivia experts focus on in quiz questions: Human-AI comparison through “LLM-as-a-judge” approach</p>
+        <p class="publication-authors">Shirasuna, M., &amp; <strong>Yoshida, Y.</strong> <span class="publication-note">These authors contributed equally.</span></p>
+        <p class="publication-venue">PsyArXiv，2025</p>
+        <p class="publication-links">
+          <a href="https://doi.org/10.31234/osf.io/4qn3a_v2" target="_blank" rel="noopener noreferrer">[Preprint]</a>
+        </p>
+      </article>
+
+      <article class="publication-item">
+        <h3 class="publication-category">Book Chapter</h3>
+        <p class="publication-title">メタファーの自動生成による意味的な重ね合わせのあるキャッチコピー生成器の構築</p>
+        <p class="publication-authors"><strong>吉田 勇翔</strong>・梅村 奏子・狩野 芳伸</p>
+        <p class="publication-venue">『メタファー研究 3　特集：身体性・AIはメタファーを理解できるか』ひつじ書房，2026年3月</p>
+        <p class="publication-links">
+          <a href="https://www.hituzi.co.jp/hituzibooks/ISBN978-4-8234-1132-8.htm" target="_blank" rel="noopener noreferrer">[Publisher]</a>
+        </p>
+      </article>
     </section>
 
     <!-- Projects Section -->
     <section id="projects">
-      <h2 class="section-title"><span class="title-text">Projects</span></h2>
+      <h2 class="section-title"><span class="title-text">Projects &amp; Activities</span></h2>
       
       <!-- 【編集箇所】プロジェクト（必要に応じて追加・編集） -->
-      
-      <div class="project-item">
-        <h3 class="project-title">hayabusa-ai（早押しクイズ特化型AI）</h3>
-        <p class="project-tech">Python / NLP / Machine Learning</p>
-        <p class="project-description">
-          早押しクイズに特化したAIシステム。問題文が読み上げられている途中でも、キーワードや文脈から答えを推定し、
-          最適なタイミングでボタンを押す技術を実装しています。自然言語処理と機械学習を組み合わせた研究プロジェクトです。
-        </p>
-        <p class="project-links">
-          <a href="https://github.com/bravebird0914/llm-quiz-attribution" target="_blank">[GitHub]</a>
-        </p>
-      </div>
 
       <div class="project-item">
         <h3 class="project-title">ポートフォリオサイト</h3>
@@ -299,95 +321,15 @@
           <a href="https://github.com/bravebird0914/bravebird0914.github.io" target="_blank">[GitHub]</a>
         </p>
       </div>
-    </section>
 
-    <!-- lontra Section -->
-    <section id="lontra">
-      <h2 class="section-title"><span class="title-text">lontra</span></h2>
-      
-      <div class="blog-grid">
-        <div class="blog-card">
-          <div class="blog-card-meta">
-            <span class="blog-card-date">Gourmet</span>
-            <span class="blog-card-category">🍴</span>
-          </div>
-          <h3 class="blog-card-title">
-            <a href="https://bravebird0914.github.io/lontra-blog/">lontra - グルメブログ</a>
-          </h3>
-          <p class="blog-card-excerpt">
-            友人と2人で運営するグルメブログ。
-          </p>
-          <a href="https://bravebird0914.github.io/lontra-blog/" class="blog-card-link">
-            <span>Visit Blog</span>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- hayabusa Section -->
-    <section id="hayabusa">
-      <h2 class="section-title"><span class="title-text">hayabusa</span></h2>
-      
-      <div class="blog-grid">
-        <div class="blog-card">
-          <div class="blog-card-meta">
-            <span class="blog-card-date">Research</span>
-            <span class="blog-card-category">🕊️</span>
-          </div>
-          <h3 class="blog-card-title">
-            <a href="hayabusa/index.html">hayabusa - 早押しクイズ特化型LLM</a>
-          </h3>
-          <p class="blog-card-excerpt">
-           早押しクイズ特化型LLM。問題文が読み上げられている途中でも、キーワードや文脈から答えを推定し、最適なタイミングでボタンを押す技術を実現しています。
-          </p>
-          <a href="hayabusa/index.html" class="blog-card-link">
-            <span>Visit Official Site</span>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Publications Section -->
-    <section id="publications">
-      <h2 class="section-title"><span class="title-text">Publications</span></h2>
-
-      <div class="publication-item">
-        <h3 class="publication-category">Book Chapters</h3>
-        <p class="publication-title">メタファー研究 3　特集：身体性・AIはメタファーを理解できるか</p>
-        <p class="publication-authors">鍋島弘治朗・楠見孝・内海彰・河野哲也・菅村玄二（編）</p>
-        <p class="publication-venue">ひつじ書房，2026年3月，ISBN 978-4-8234-1132-8</p>
-        <p class="publication-links">
-          <a href="https://www.hituzi.co.jp/hituzibooks/ISBN978-4-8234-1132-8.htm" target="_blank" rel="noopener noreferrer">[Publisher]</a>
+      <div class="project-item">
+        <h3 class="project-title">lontra — グルメブログ</h3>
+        <p class="project-tech">Personal Activity / Web</p>
+        <p class="project-description">
+          友人と2人で運営するグルメブログ。研究・開発以外の関心や体験を発信しています。
         </p>
-      </div>
-
-      <div class="publication-item">
-        <h3 class="publication-category">Preprints</h3>
-        <p class="publication-title">Attempts to investigate what words trivia experts focus on in quiz questions: Human-AI comparison through "LLM-as-a-judge" approach</p>
-        <p class="publication-authors">Shirasuna, M., &amp; Yoshida, Y. <span style="font-style: italic; font-size: 0.9em;">（These authors contributed equally to this work.）</span></p>
-        <p class="publication-venue">PsyArXiv，2025</p>
-      </div>
-
-      <div class="publication-item">
-        <h3 class="publication-category">Journal Articles</h3>
-        <p class="publication-venue" style="font-style: italic; color: #94a3b8;">準備中</p>
-      </div>
-
-      <div class="publication-item">
-        <h3 class="publication-category">Conference Papers</h3>
-        <p class="publication-title">早押しクイズにおける人間の認知過程を再現した大規模言語モデルに基づくシステムの構築</p>
-        <p class="publication-authors">吉田 勇翔、白砂 大、狩野 芳伸</p>
-        <p class="publication-venue">第40回人工知能学会全国大会（JSAI2026），2026年6月</p>
-        <p class="publication-links">
-          <a href="https://pub.confit.atlas.jp/ja/event/jsai2026/presentation/4L5-GS-1b-04" target="_blank" rel="noopener noreferrer">[Link]</a>
+        <p class="project-links">
+          <a href="https://bravebird0914.github.io/lontra-blog/" target="_blank" rel="noopener noreferrer">[Visit Blog]</a>
         </p>
       </div>
     </section>
@@ -419,7 +361,7 @@
 
   </main>
 
-  <script src="js/main.js?v=20260828-1"></script>
+  <script src="js/main.js?v=20260828-2"></script>
 </body>
 </html>
 

@@ -58,6 +58,22 @@ body {
   animation: fadeIn 0.6s ease-in;
 }
 
+.skip-link {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 2000;
+  padding: 0.65rem 1rem;
+  border-radius: 8px;
+  background: #00CED1;
+  color: #ffffff;
+  transform: translateY(-160%);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
 /* ========================================
    サイドバー
 ======================================== */
@@ -77,6 +93,7 @@ body {
 
 .sidebar-header {
   margin-bottom: 3rem;
+  text-align: center;
 }
 
 .profile-image-wrapper {
@@ -108,6 +125,23 @@ body {
 .profile-image-link:hover .profile-image {
   border-color: rgba(127, 255, 212, 0.5);
   box-shadow: 0 8px 24px rgba(127, 255, 212, 0.35);
+}
+
+.sidebar-name {
+  margin-top: -0.75rem;
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 1.08rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: #1a202c;
+}
+
+.sidebar-handle {
+  margin: 0.15rem 0 1.2rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  color: #718096;
 }
 
 .sidebar-title-link {
@@ -184,6 +218,7 @@ body {
   font-weight: 400;
   letter-spacing: 0.05em;
   text-transform: uppercase;
+  text-align: left;
 }
 
 .subtitle-line {
@@ -498,8 +533,11 @@ body {
 ======================================== */
 .main-content {
   margin-left: 280px;
+  width: calc(100% - 280px);
   padding: 4rem 4rem 4rem;
-  max-width: calc(800px + 280px);
+  padding-left: max(4rem, calc((100% - 800px) / 2));
+  padding-right: max(4rem, calc((100% - 800px) / 2));
+  max-width: none;
   min-height: 100vh;
 }
 
@@ -521,8 +559,8 @@ body {
 }
 
 section {
-  margin-bottom: 5rem;
-  padding-bottom: 2rem;
+  margin-bottom: 4rem;
+  padding-bottom: 1rem;
   opacity: 0;
   transform: translateY(30px);
   animation: fadeInUp 0.8s ease forwards;
@@ -552,7 +590,7 @@ section:nth-child(8) { animation-delay: 0.8s; }
   font-size: 3rem;
   font-weight: 400;
   color: #1a202c;
-  margin-bottom: 3rem;
+  margin-bottom: 2.4rem;
   letter-spacing: 0.02em;
   font-family: 'Cormorant Garamond', 'Playfair Display', 'Noto Sans JP', serif;
   position: relative;
@@ -587,21 +625,6 @@ section:nth-child(8) { animation-delay: 0.8s; }
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.section-title:hover .title-text {
-  transform: translateY(-3px);
-  color: #00CED1;
-}
-
-.section-title:hover .title-text::before {
-  transform: translate(3px, 3px);
-  color: rgba(127, 255, 212, 0.5);
-}
-
-.section-title:hover .title-text::after {
-  width: 100%;
-  height: 4px;
-}
-
 /* ========================================
    自己紹介セクション
 ======================================== */
@@ -611,6 +634,43 @@ section:nth-child(8) { animation-delay: 0.8s; }
   line-height: 1.9;
 }
 
+.hero-kicker {
+  margin-bottom: 0.5rem !important;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.76rem !important;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #00aeb1;
+}
+
+.hero-name {
+  margin: 0;
+  font-family: 'Cormorant Garamond', 'Noto Sans JP', serif;
+  font-size: clamp(3rem, 6vw, 4.8rem);
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: 0.04em;
+  color: #1a202c;
+}
+
+.hero-name rt {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 0.18em;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  color: #718096;
+}
+
+.hero-role {
+  margin: 0.8rem 0 2rem !important;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem !important;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: #4a5568;
+}
+
 .intro-text {
   font-size: 1.25rem;
   line-height: 2;
@@ -618,6 +678,77 @@ section:nth-child(8) { animation-delay: 0.8s; }
   padding-left: 1.5rem;
   border-left: 3px solid rgba(127, 255, 212, 0.4);
   margin-bottom: 2rem !important;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.hero-actions a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 42px;
+  padding: 0.65rem 1rem;
+  border: 1px solid rgba(0, 206, 209, 0.3);
+  border-radius: 999px;
+  background: rgba(127, 255, 212, 0.08);
+  font-size: 0.86rem;
+  font-weight: 600;
+}
+
+.hero-actions a:hover {
+  background: rgba(127, 255, 212, 0.16);
+  border-color: rgba(0, 206, 209, 0.55);
+}
+
+/* ========================================
+   代表成果
+======================================== */
+.highlights-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.highlight-card {
+  display: flex;
+  min-height: 190px;
+  flex-direction: column;
+  gap: 0.65rem;
+  padding: 1.35rem;
+  border: 1px solid rgba(127, 255, 212, 0.25);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.68);
+  color: #4a5568;
+}
+
+.highlight-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(0, 206, 209, 0.5);
+  box-shadow: 0 10px 24px rgba(127, 255, 212, 0.15);
+}
+
+.highlight-card strong {
+  font-size: 1.08rem;
+  line-height: 1.4;
+  color: #1a202c;
+}
+
+.highlight-card > span:last-child {
+  font-size: 0.88rem;
+  line-height: 1.7;
+}
+
+.highlight-label {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #00aeb1;
 }
 
 .intro-text::before {
@@ -684,7 +815,7 @@ section:nth-child(8) { animation-delay: 0.8s; }
 }
 
 .experience-item:hover {
-  transform: translateY(-4px);
+  transform: translateY(-2px);
   box-shadow: 0 12px 24px rgba(127, 255, 212, 0.2);
   border-color: rgba(127, 255, 212, 0.4);
   background: rgba(255, 255, 255, 0.9);
@@ -767,6 +898,13 @@ section:nth-child(8) { animation-delay: 0.8s; }
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
+.publication-note {
+  display: inline-block;
+  font-size: 0.85em;
+  font-style: italic;
+  color: #718096;
+}
+
 .publication-title {
   font-size: 1rem;
   font-weight: 600;
@@ -811,6 +949,74 @@ section:nth-child(8) { animation-delay: 0.8s; }
 /* ========================================
    共同研究者セクション
 ======================================== */
+.people-section {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(260px, 0.65fr);
+  gap: 1.25rem;
+  margin-top: 3rem;
+}
+
+.subsection-title {
+  grid-column: 1 / -1;
+  margin-bottom: 0.25rem;
+  font-family: 'Cormorant Garamond', 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 500;
+  color: #1a202c;
+}
+
+.people-role-badge {
+  display: inline-flex;
+  width: fit-content;
+  margin-bottom: 1.25rem;
+  padding: 0.35rem 0.65rem;
+  border-radius: 999px;
+  background: rgba(127, 255, 212, 0.12);
+  color: #008b8d;
+  font-family: 'Montserrat', 'Noto Sans JP', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+}
+
+.collaborator-card.supervisor-card {
+  border-width: 2px;
+  border-color: rgba(0, 206, 209, 0.45);
+  background:
+    linear-gradient(135deg, rgba(127, 255, 212, 0.12), transparent 55%),
+    rgba(255, 255, 255, 0.9);
+  box-shadow: 0 14px 34px rgba(0, 206, 209, 0.12);
+}
+
+.collaborator-card.supervisor-card::before {
+  height: 5px;
+  transform: scaleX(1);
+}
+
+.supervisor-card .collaborator-name {
+  font-size: 1.35rem;
+}
+
+.research-collaborator-card {
+  align-self: stretch;
+}
+
+.people-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.people-links a {
+  display: inline-flex;
+  padding: 0.5rem 0.8rem;
+  border: 1px solid rgba(127, 255, 212, 0.25);
+  border-radius: 8px;
+  background: rgba(127, 255, 212, 0.08);
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
 .collaborators-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -842,7 +1048,7 @@ section:nth-child(8) { animation-delay: 0.8s; }
 }
 
 .collaborator-card:hover {
-  transform: translateY(-8px);
+  transform: translateY(-2px);
   box-shadow: 0 16px 32px rgba(127, 255, 212, 0.25);
   border-color: rgba(127, 255, 212, 0.5);
   background: rgba(255, 255, 255, 0.95);
@@ -880,7 +1086,7 @@ section:nth-child(8) { animation-delay: 0.8s; }
 
 .collaborator-card:hover .collaborator-icon {
   background: linear-gradient(135deg, rgba(127, 255, 212, 0.25), rgba(0, 206, 209, 0.25));
-  transform: rotate(10deg) scale(1.1);
+  transform: scale(1.04);
 }
 
 .collaborator-card:hover .collaborator-icon svg {
@@ -974,7 +1180,7 @@ section:nth-child(8) { animation-delay: 0.8s; }
 }
 
 .project-item:hover {
-  transform: translateY(-4px);
+  transform: translateY(-2px);
   box-shadow: 0 12px 24px rgba(127, 255, 212, 0.2);
   border-color: rgba(127, 255, 212, 0.4);
   background: rgba(255, 255, 255, 0.9);
@@ -1495,6 +1701,7 @@ section:nth-child(8) { animation-delay: 0.8s; }
   }
   
   .date-time-widget {
+    position: absolute;
     top: 1rem;
     right: 5rem;
     width: 128px;
@@ -1527,12 +1734,26 @@ section:nth-child(8) { animation-delay: 0.8s; }
 
   .main-content {
     margin-left: 0;
+    width: 100%;
     padding: 2rem 1.5rem 3rem;
     max-width: 100%;
   }
 
   .section-title {
     font-size: 2rem;
+  }
+
+  .highlights-grid,
+  .people-section {
+    grid-template-columns: 1fr;
+  }
+
+  .highlight-card {
+    min-height: 0;
+  }
+
+  .subsection-title {
+    grid-column: auto;
   }
   
   .sidebar-title {
@@ -1569,6 +1790,24 @@ section:nth-child(8) { animation-delay: 0.8s; }
 
   .section-title {
     font-size: 1.75rem;
+  }
+
+  .hero-name {
+    font-size: 2.8rem;
+  }
+
+  .hero-role {
+    font-size: 0.82rem !important;
+  }
+
+  .hero-actions {
+    gap: 0.5rem;
+  }
+
+  .hero-actions a {
+    flex: 1 1 auto;
+    justify-content: center;
+    font-size: 0.8rem;
   }
   
   .sidebar-title {
@@ -1662,6 +1901,47 @@ body.dark-mode .date-weekday {
 body.dark-mode .sidebar {
   background: rgba(15, 27, 42, 0.95);
   box-shadow: 2px 0 30px rgba(127, 255, 212, 0.15);
+}
+
+body.dark-mode .sidebar-name,
+body.dark-mode .hero-name,
+body.dark-mode .highlight-card strong,
+body.dark-mode .subsection-title {
+  color: #f1f5f9;
+}
+
+body.dark-mode .sidebar-handle,
+body.dark-mode .hero-role {
+  color: #94a3b8;
+}
+
+body.dark-mode .highlight-card {
+  background: rgba(15, 27, 42, 0.65);
+  border-color: rgba(127, 255, 212, 0.2);
+  color: #cbd5e1;
+}
+
+body.dark-mode .highlight-card:hover {
+  background: rgba(15, 27, 42, 0.82);
+  border-color: rgba(127, 255, 212, 0.45);
+}
+
+body.dark-mode .collaborator-card.supervisor-card {
+  background:
+    linear-gradient(135deg, rgba(127, 255, 212, 0.12), transparent 55%),
+    rgba(15, 27, 42, 0.85);
+  border-color: rgba(0, 206, 209, 0.55);
+}
+
+body.dark-mode .people-role-badge {
+  background: rgba(127, 255, 212, 0.12);
+  color: #7FFFD4;
+}
+
+body.dark-mode .people-links a {
+  background: rgba(127, 255, 212, 0.08);
+  border-color: rgba(127, 255, 212, 0.25);
+  color: #7FFFD4;
 }
 
 @media (max-width: 768px) {
@@ -2082,6 +2362,16 @@ body.dark-mode .site-footer-text {
 /* ========================================
    アクセシビリティ: 動きを減らす設定
 ======================================== */
+@media (hover: none) {
+  .experience-item:hover,
+  .project-item:hover,
+  .publication-item:hover,
+  .collaborator-card:hover,
+  .highlight-card:hover {
+    transform: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
