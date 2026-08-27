@@ -1590,30 +1590,23 @@ section:nth-child(8) { animation-delay: 0.8s; }
   }
   
   .date-time-widget {
-    top: 4.5rem;
+    top: 0.75rem;
     right: 0.75rem;
-    width: 112px;
-    gap: 0.55rem;
+    width: auto;
+    grid-template-columns: auto 38px;
+    gap: 0.5rem;
   }
 
   .current-date {
+    grid-column: auto;
     padding: 0.4rem 0.7rem;
     font-size: 0.7rem;
     gap: 0.25rem;
   }
 
   .analog-clock {
-    width: 60px;
-    height: 60px;
+    display: none;
   }
-
-  .clock-number {
-    font-size: 0.48rem;
-  }
-
-  .clock-hour { height: 15px; }
-  .clock-minute { height: 21px; }
-  .clock-second { height: 23px; }
 
   .date-weekday {
     display: none;
