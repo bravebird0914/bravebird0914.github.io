@@ -47,6 +47,44 @@ function updateCurrentDate() {
   }
 }
 
+// 日本時間のアナログ時計
+function updateAnalogClock() {
+  const clock = document.getElementById('analog-clock');
+  if (!clock) return;
+
+  const formatter = new Intl.DateTimeFormat('en-GB', {
+    timeZone: 'Asia/Tokyo',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+    hourCycle: 'h23'
+  });
+  const values = {};
+  for (const part of formatter.formatToParts(new Date())) {
+    if (part.type !== 'literal') values[part.type] = Number(part.value);
+  }
+
+  const hour = values.hour % 12;
+  const minute = values.minute;
+  const second = values.second;
+  const hourHand = clock.querySelector('.clock-hour');
+  const minuteHand = clock.querySelector('.clock-minute');
+  const secondHand = clock.querySelector('.clock-second');
+
+  if (hourHand) hourHand.style.transform = `rotate(${hour * 30 + minute * 0.5}deg)`;
+  if (minuteHand) minuteHand.style.transform = `rotate(${minute * 6 + second * 0.1}deg)`;
+  if (secondHand) secondHand.style.transform = `rotate(${second * 6}deg)`;
+  clock.setAttribute(
+    'aria-label',
+    `日本時間 ${String(values.hour).padStart(2, '0')}時${String(minute).padStart(2, '0')}分${String(second).padStart(2, '0')}秒`
+  );
+}
+
+function startAnalogClock() {
+  updateAnalogClock();
+  setInterval(updateAnalogClock, 1000);
+}
+
 // ページ読み込み完了後に日付を更新
 const isDev = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
 if (isDev) console.log('🚀 main.js loaded');
@@ -57,11 +95,13 @@ if (document.readyState === 'loading') {
     if (isDev) console.log('✅ DOMContentLoaded fired');
     updateCurrentDate();
     startTokyoDailyUpdate();
+    startAnalogClock();
   });
 } else {
   if (isDev) console.log('✅ DOM already loaded');
   updateCurrentDate();
   startTokyoDailyUpdate();
+  startAnalogClock();
 }
 
 // 日付が変わったら更新（東京時刻の午前0時）

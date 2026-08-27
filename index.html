@@ -77,12 +77,24 @@
     </div>
   </aside>
   
-  <!-- 日付表示 -->
-  <div id="current-date" class="current-date">
-    <span class="date-year"></span>
-    <span class="date-separator">.</span>
-    <span class="date-month-day"></span>
-    <span class="date-weekday"></span>
+  <!-- 日付・時計表示 -->
+  <div class="date-time-widget">
+    <div id="current-date" class="current-date">
+      <span class="date-year"></span>
+      <span class="date-separator">.</span>
+      <span class="date-month-day"></span>
+      <span class="date-weekday"></span>
+    </div>
+    <div id="analog-clock" class="analog-clock" role="img" aria-label="日本時間">
+      <span class="clock-number clock-number-12">12</span>
+      <span class="clock-number clock-number-3">3</span>
+      <span class="clock-number clock-number-6">6</span>
+      <span class="clock-number clock-number-9">9</span>
+      <span class="clock-hand clock-hour"></span>
+      <span class="clock-hand clock-minute"></span>
+      <span class="clock-hand clock-second"></span>
+      <span class="clock-center"></span>
+    </div>
   </div>
 
   <!-- Dark Mode Toggle -->
@@ -117,7 +129,8 @@
       <h2 class="section-title"><span class="title-text">About</span></h2>
       <!-- 【編集箇所】自己紹介文 -->
       <p class="intro-text">
-        <span class="name-highlight">吉田勇翔</span> です。静岡大学 情報学部 行動情報学科の<a href="https://kanolab.net/" target="_blank" rel="noopener noreferrer">狩野研究室</a>に所属し、自然言語処理（NLP）の研究に取り組んでいます。
+        <span class="name-highlight"><ruby>吉田勇翔<rp>（</rp><rt>よしだ ゆうと</rt><rp>）</rp></ruby></span> です。<br />
+        静岡大学 情報学部 行動情報学科の<a href="https://kanolab.net/" target="_blank" rel="noopener noreferrer">狩野研究室</a>に所属し、自然言語処理（NLP）の研究に取り組んでいます。
       </p>
     </section>
 
@@ -293,7 +306,7 @@
     <section id="lontra">
       <h2 class="section-title"><span class="title-text">lontra</span></h2>
       
-      <div class="blog-grid" style="max-width: 600px;">
+      <div class="blog-grid">
         <div class="blog-card">
           <div class="blog-card-meta">
             <span class="blog-card-date">Gourmet</span>
@@ -320,7 +333,7 @@
     <section id="hayabusa">
       <h2 class="section-title"><span class="title-text">hayabusa</span></h2>
       
-      <div class="blog-grid" style="max-width: 600px;">
+      <div class="blog-grid">
         <div class="blog-card">
           <div class="blog-card-meta">
             <span class="blog-card-date">Research</span>

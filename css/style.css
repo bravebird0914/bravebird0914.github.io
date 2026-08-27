@@ -301,12 +301,20 @@ body {
 }
 
 /* ========================================
-   日付表示（右上）- シンプル軽量デザイン
+   日付・アナログ時計表示（右上）
 ======================================== */
-.current-date {
+.date-time-widget {
   position: fixed;
   top: 2rem;
   right: 2rem;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.current-date {
   display: flex;
   align-items: center;
   gap: 0.4rem;
@@ -316,7 +324,6 @@ body {
   border: 1px solid rgba(127, 255, 212, 0.25);
   border-radius: 20px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  z-index: 1000;
   font-family: 'Montserrat', 'Noto Sans JP', sans-serif;
   font-size: 0.85rem;
   color: #4a5568;
@@ -345,6 +352,72 @@ body {
   margin-left: 0.2rem;
   padding-left: 0.5rem;
   border-left: 1px solid rgba(127, 255, 212, 0.3);
+}
+
+.analog-clock {
+  position: relative;
+  width: 76px;
+  height: 76px;
+  border: 1px solid rgba(127, 255, 212, 0.35);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  color: #4a5568;
+}
+
+.clock-number {
+  position: absolute;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.55rem;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.clock-number-12 { top: 6px; left: 50%; transform: translateX(-50%); }
+.clock-number-3 { top: 50%; right: 7px; transform: translateY(-50%); }
+.clock-number-6 { bottom: 6px; left: 50%; transform: translateX(-50%); }
+.clock-number-9 { top: 50%; left: 7px; transform: translateY(-50%); }
+
+.clock-hand {
+  position: absolute;
+  left: 50%;
+  bottom: 50%;
+  border-radius: 999px;
+  transform-origin: 50% 100%;
+}
+
+.clock-hour {
+  width: 3px;
+  height: 20px;
+  margin-left: -1.5px;
+  background: #4a5568;
+}
+
+.clock-minute {
+  width: 2px;
+  height: 27px;
+  margin-left: -1px;
+  background: #2d3748;
+}
+
+.clock-second {
+  width: 1px;
+  height: 29px;
+  margin-left: -0.5px;
+  background: #00CED1;
+}
+
+.clock-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #00CED1;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.85);
 }
 
 /* ========================================
@@ -562,6 +635,13 @@ section:nth-child(8) { animation-delay: 0.8s; }
   color: #00CED1;
   background: linear-gradient(180deg, transparent 50%, rgba(127, 255, 212, 0.4) 50%);
   transform: translateY(-2px);
+}
+
+.name-highlight rt {
+  font-size: 0.48em;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: #718096;
 }
 
 .keyword-highlight {
@@ -1403,12 +1483,24 @@ section:nth-child(8) { animation-delay: 0.8s; }
     margin-bottom: 0;
   }
   
-  .current-date {
+  .date-time-widget {
     top: 1rem;
     right: 5rem;
+  }
+
+  .current-date {
     padding: 0.45rem 0.85rem;
     font-size: 0.75rem;
   }
+
+  .analog-clock {
+    width: 68px;
+    height: 68px;
+  }
+
+  .clock-hour { height: 18px; }
+  .clock-minute { height: 24px; }
+  .clock-second { height: 26px; }
 
   .date-weekday {
     font-size: 0.7rem;
@@ -1485,13 +1577,30 @@ section:nth-child(8) { animation-delay: 0.8s; }
     font-size: 2rem;
   }
   
-  .current-date {
+  .date-time-widget {
     top: 4.5rem;
     right: 0.75rem;
+    gap: 0.55rem;
+  }
+
+  .current-date {
     padding: 0.4rem 0.7rem;
     font-size: 0.7rem;
     gap: 0.25rem;
   }
+
+  .analog-clock {
+    width: 60px;
+    height: 60px;
+  }
+
+  .clock-number {
+    font-size: 0.48rem;
+  }
+
+  .clock-hour { height: 15px; }
+  .clock-minute { height: 21px; }
+  .clock-second { height: 23px; }
 
   .date-weekday {
     display: none;
@@ -1522,6 +1631,21 @@ body.dark-mode .current-date {
   background: rgba(15, 27, 42, 0.85);
   border-color: rgba(127, 255, 212, 0.3);
   color: #cbd5e1;
+}
+
+body.dark-mode .analog-clock {
+  background: rgba(15, 27, 42, 0.9);
+  border-color: rgba(127, 255, 212, 0.3);
+  color: #cbd5e1;
+}
+
+body.dark-mode .clock-hour,
+body.dark-mode .clock-minute {
+  background: #cbd5e1;
+}
+
+body.dark-mode .clock-center {
+  box-shadow: 0 0 0 2px rgba(15, 27, 42, 0.9);
 }
 
 body.dark-mode .date-weekday {
