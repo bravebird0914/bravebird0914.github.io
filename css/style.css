@@ -521,8 +521,8 @@ body {
 }
 
 section {
-  margin-bottom: 5rem;
-  padding-bottom: 2rem;
+  margin-bottom: 3.25rem;
+  padding-bottom: 0.75rem;
   opacity: 0;
   transform: translateY(30px);
   animation: fadeInUp 0.8s ease forwards;
@@ -552,7 +552,7 @@ section:nth-child(8) { animation-delay: 0.8s; }
   font-size: 3rem;
   font-weight: 400;
   color: #1a202c;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
   letter-spacing: 0.02em;
   font-family: 'Cormorant Garamond', 'Playfair Display', 'Noto Sans JP', serif;
   position: relative;
@@ -617,7 +617,7 @@ section:nth-child(8) { animation-delay: 0.8s; }
   position: relative;
   padding-left: 1.5rem;
   border-left: 3px solid rgba(127, 255, 212, 0.4);
-  margin-bottom: 2rem !important;
+  margin-bottom: 1rem !important;
 }
 
 .intro-text::before {
