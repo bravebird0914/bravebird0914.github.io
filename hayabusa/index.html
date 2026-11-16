@@ -1,316 +1,174 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" data-theme="day">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
-  <title>hayabusa - 早押しクイズ特化型LLM</title>
-  <meta name="description" content="hayabusa - 世界初の早押しクイズ特化型LLM。問題文の途中からでも答えを推定し、最適なタイミングでボタンを押す技術を実現しています。" />
-  
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="../images/profile.png" />
-  <link rel="apple-touch-icon" href="../images/profile.png" />
-  
-  <!-- OGP -->
+
+  <title>hayabusa - LLMシステムの早押しクイズ大会</title>
+  <meta name="description" content="hayabusa は、改造したLLMシステム同士、そしてLLMシステムと人間が早押しクイズで競う大会です。" />
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M4 33 L29 26 L45 7 L40 27 L61 29 L41 34 L33 52 L29 36 Z' fill='%2300b4ff'/%3E%3C/svg%3E" />
+
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="hayabusa - 早押しクイズ特化型LLM" />
-  <meta property="og:description" content="世界初の早押しクイズ特化型LLM。問題文が読み上げられている途中でも、キーワードや文脈から答えを推定します。" />
+  <meta property="og:title" content="hayabusa - LLMシステムの早押しクイズ大会" />
+  <meta property="og:description" content="改造したLLMシステム同士、そしてLLMシステムと人間が早押しクイズで競う大会。" />
   <meta property="og:url" content="https://bravebird0914.github.io/hayabusa/" />
-  
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="hayabusa - 早押しクイズ特化型LLM" />
-  <meta name="twitter:description" content="世界初の早押しクイズ特化型LLM。問題文が読み上げられている途中でも、キーワードや文脈から答えを推定します。" />
-  
-  <!-- Google Fonts -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="hayabusa - LLMシステムの早押しクイズ大会" />
+  <meta name="twitter:description" content="改造したLLMシステム同士、そしてLLMシステムと人間が早押しクイズで競う大会。" />
+
+  <script>
+    (function () {
+      var hour = Number(new Intl.DateTimeFormat('en-US', { timeZone: 'Asia/Tokyo', hour: 'numeric', hourCycle: 'h23' }).format(new Date()));
+      document.documentElement.dataset.theme = hour >= 5 && hour < 17 ? 'day' : 'night';
+    })();
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Montserrat:wght@200;300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;600;700&family=Cormorant+Upright:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  
-  <link rel="stylesheet" href="css/hayabusa.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Shippori+Mincho:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/hayabusa.css?v=20261116-6" />
 </head>
 <body>
-  <!-- ===============================================
-       サイドバーナビゲーション
-       ================================================ -->
-  <aside class="sidebar">
-    <div class="sidebar-header">
-      <div class="profile-image-wrapper">
-        <a href="../index.html" class="profile-image-link">
-          <img src="../images/profile.png" alt="Profile" class="profile-image">
-        </a>
-      </div>
-      
-      <a href="../index.html" class="sidebar-title-link">
-        <h1 class="sidebar-title">
-          <span class="name-first">hayabusa</span>
-        </h1>
-      </a>
-      <p class="sidebar-subtitle">
-        <span class="subtitle-line">早押しクイズ特化型LLM</span>
-        <span class="subtitle-accent">Research Project</span>
-      </p>
-    </div>
-    
-    <nav class="sidebar-nav">
-      <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#features">Features</a></li>
-        <li><a href="#technology">Technology</a></li>
-        <li><a href="#research">Research</a></li>
-        <li><a href="#links">Links</a></li>
-        <li><a href="../index.html">Portfolio</a></li>
-      </ul>
-    </nav>
-  </aside>
-  
-  <!-- 日付表示 -->
-  <div id="current-date" class="current-date">
-    <span class="date-year"></span>
-    <span class="date-separator">.</span>
-    <span class="date-month-day"></span>
-    <span class="date-weekday"></span>
+  <div class="sky" aria-hidden="true">
+    <div class="sky-clouds sky-clouds--far"></div>
+    <div class="sky-clouds sky-clouds--near"></div>
+    <div class="sky-grid"></div>
+    <div class="sky-stars" id="sky-stars"></div>
+    <div class="sky-streaks" id="sky-streaks"></div>
   </div>
 
-  <!-- Dark Mode Toggle -->
-  <button id="dark-mode-toggle" class="dark-mode-toggle" aria-label="ダークモード切り替え">
-    <span class="toggle-icon">
-      <!-- Moon Icon (Light Mode) -->
-      <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-      </svg>
-      <!-- Sun Icon (Dark Mode) -->
-      <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="display: none;">
-        <circle cx="12" cy="12" r="5"></circle>
-        <line x1="12" y1="1" x2="12" y2="3"></line>
-        <line x1="12" y1="21" x2="12" y2="23"></line>
-        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-        <line x1="1" y1="12" x2="3" y2="12"></line>
-        <line x1="21" y1="12" x2="23" y2="12"></line>
-        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-      </svg>
-    </span>
-  </button>
+  <header class="site-header">
+    <a href="#top" class="brand" aria-label="hayabusa トップへ">
+      <svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true"><use href="#falcon" /></svg>
+      <span class="brand-name">hayabusa</span>
+    </a>
+    <nav class="site-nav" aria-label="ページ内メニュー">
+      <a href="#about">About</a>
+      <a href="#matches">Matches</a>
+      <a href="#info">Info</a>
+      <a href="#research">Research</a>
+      <a href="#people">People</a>
+    </nav>
+  </header>
 
-  <!-- ===============================================
-       メインコンテンツ
-       ================================================ -->
-  <main class="main-content">
-    
-    <!-- About Section -->
-    <section id="about">
-      <h2 class="section-title"><span class="title-text">About</span></h2>
-      
-      <p class="intro-text">
-        <span class="name-highlight">hayabusa</span>は、世界初の早押しクイズ特化型LLM（大規模言語モデル）です。
+  <main id="top">
+    <section class="hero">
+      <svg class="hero-mark" viewBox="0 0 64 64" aria-hidden="true"><use href="#falcon" /></svg>
+      <p class="hero-kicker">LLM QUIZ BOWL</p>
+      <h1 class="hero-title">hayabusa</h1>
+      <p class="hero-copy">その一文字で、押せるか。</p>
+
+      <div class="buzzer-demo" aria-hidden="true">
+        <div class="buzzer-demo-head">
+          <span class="buzzer-demo-label">DEMO</span>
+          <span class="buzzer-lamp" id="buzzer-lamp"></span>
+        </div>
+        <p class="buzzer-question"><span id="buzzer-text"></span><span class="buzzer-caret"></span></p>
+        <p class="buzzer-answer" id="buzzer-answer"></p>
+      </div>
+
+      <a href="#about" class="hero-scroll">Scroll</a>
+    </section>
+
+    <section id="about" class="block">
+      <h2 class="block-title"><span>About</span></h2>
+      <p class="block-lead">
+        hayabusa は、早押しクイズで LLM システムの速さと賢さを競う大会です。
+        参加者が改造した LLM システム同士、そして LLM システムと人間が、同じ問題で一斉にボタンを狙います。
       </p>
-      <p>
-        従来の質問応答システムとは異なり、問題文が完全に読み上げられる前に、キーワードや文脈から答えを推定し、
-        最適なタイミングでボタンを押す技術を実現しています。
-      </p>
-      
-      <div class="experience-item">
-        <h3 class="experience-company">概要</h3>
-        <p class="experience-description">
-          このシステムは、自然言語処理（NLP）と機械学習の技術を組み合わせることで、
-          リアルタイムでの文脈理解と回答生成を可能にしています。
-        </p>
-      </div>
+    </section>
 
-      <div class="experience-item">
-        <h3 class="experience-company">開発背景</h3>
-        <p class="experience-description">
-          早押しクイズは、問題文が読み上げられている途中で答えを推測し、最も早く正確に回答する競技です。
-          この特性を活かすため、従来の質問応答システムでは実現困難だった「不完全な情報からの推論」と
-          「最適なタイミングの判定」を実現する必要がありました。
-        </p>
-        <p class="experience-description">
-          hayabusaは、この課題に特化したLLMとして開発され、早押しクイズの特性を最大限に活かす
-          システムとして設計されています。
-        </p>
+    <section id="matches" class="block">
+      <h2 class="block-title"><span>Matches</span></h2>
+      <div class="match-grid">
+        <article class="match-card">
+          <p class="match-tag">Format 01</p>
+          <h3 class="match-title">System <span>vs</span> System</h3>
+          <p class="match-text">改造した LLM システム同士が対戦します。どこで押し、何と答えるかの設計力が勝負です。</p>
+        </article>
+        <article class="match-card">
+          <p class="match-tag">Format 02</p>
+          <h3 class="match-title">System <span>vs</span> Human</h3>
+          <p class="match-text">LLM システムと人間のクイズプレイヤーが対戦します。どちらが先に答えにたどり着くかを競います。</p>
+        </article>
       </div>
     </section>
 
-    <!-- Features Section -->
-    <section id="features">
-      <h2 class="section-title"><span class="title-text">Features</span></h2>
-      
-      <div class="blog-grid">
-        <div class="blog-card">
-          <div class="blog-card-meta">
-            <span class="blog-card-date">Core Feature</span>
-            <span class="blog-card-category">⚡</span>
-          </div>
-          <h3 class="blog-card-title">リアルタイム回答推定</h3>
-          <p class="blog-card-excerpt">
-            問題文が読み上げられている途中でも、キーワードや文脈から答えを推定します。
-            完全な問題文を待つ必要がなく、早押しクイズの特性を最大限に活かせます。
-          </p>
-        </div>
-
-        <div class="blog-card">
-          <div class="blog-card-meta">
-            <span class="blog-card-date">Core Feature</span>
-            <span class="blog-card-category">🎯</span>
-          </div>
-          <h3 class="blog-card-title">高精度な文脈理解</h3>
-          <p class="blog-card-excerpt">
-            自然言語処理の最新技術を活用し、不完全な情報からでも正確な文脈を理解します。
-            単なるキーワードマッチングではなく、意味的な理解に基づいた推論を行います。
-          </p>
-        </div>
-
-        <div class="blog-card">
-          <div class="blog-card-meta">
-            <span class="blog-card-date">Core Feature</span>
-            <span class="blog-card-category">⏱️</span>
-          </div>
-          <h3 class="blog-card-title">最適なタイミング判定</h3>
-          <p class="blog-card-excerpt">
-            答えの確信度と問題文の進行状況を分析し、最適なタイミングでボタンを押すタイミングを判定します。
-            早すぎず、遅すぎない、絶妙なタイミングを実現します。
-          </p>
-        </div>
+    <section id="info" class="block">
+      <h2 class="block-title"><span>Info</span></h2>
+      <div class="info-grid">
+        <article class="info-card">
+          <h3 class="info-title">Schedule</h3>
+          <p class="info-status">準備中</p>
+        </article>
+        <article class="info-card">
+          <h3 class="info-title">Rules</h3>
+          <p class="info-status">準備中</p>
+        </article>
+        <article class="info-card">
+          <h3 class="info-title">Entry</h3>
+          <p class="info-status">準備中</p>
+        </article>
       </div>
     </section>
 
-    <!-- Technology Section -->
-    <section id="technology">
-      <h2 class="section-title"><span class="title-text">Technology</span></h2>
-      
-      <div class="publication-item">
-        <h3 class="publication-category">技術スタック</h3>
-        <p class="publication-title">最新のLLM技術を基盤とした実装</p>
-        <p class="experience-description">
-          hayabusaは、最新の大規模言語モデル（LLM）技術を基盤として構築されています。
-          PyTorchとTransformersライブラリを使用し、自然言語処理の最先端技術を実装しています。
-        </p>
-        <ul style="margin-top: 1rem; margin-left: 2rem;">
-          <li style="margin-bottom: 0.5rem;"><strong>Python</strong> - メイン言語</li>
-          <li style="margin-bottom: 0.5rem;"><strong>PyTorch</strong> - 深層学習フレームワーク</li>
-          <li style="margin-bottom: 0.5rem;"><strong>Transformers</strong> - トランスフォーマーモデル</li>
-          <li style="margin-bottom: 0.5rem;"><strong>NLP</strong> - 自然言語処理技術</li>
-        </ul>
-      </div>
+    <section id="research" class="block">
+      <h2 class="block-title"><span>Research</span></h2>
+      <p class="block-lead">hayabusa の背景にある研究です。</p>
 
-      <div class="publication-item">
-        <h3 class="publication-category">アーキテクチャ</h3>
-        <p class="publication-title">モジュール構成による柔軟な設計</p>
-        <p class="experience-description">
-          システムは、以下の主要コンポーネントで構成されています：
+      <article class="paper">
+        <p class="paper-venue">PLOS One, 2026</p>
+        <h3 class="paper-title">Attempts to investigate what words trivia experts focus on in quiz questions: Human-AI comparison through “LLM-as-a-judge” approach</h3>
+        <p class="paper-authors">Shirasuna, M., &amp; Yoshida, Y.</p>
+        <p class="paper-links">
+          <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0358332" target="_blank" rel="noopener noreferrer">PLOS One</a>
+          <a href="https://doi.org/10.1371/journal.pone.0358332" target="_blank" rel="noopener noreferrer">DOI</a>
         </p>
-        <ul style="margin-top: 1rem; margin-left: 2rem;">
-          <li style="margin-bottom: 0.5rem;"><strong>文脈理解モジュール</strong>: 不完全な問題文から文脈を抽出</li>
-          <li style="margin-bottom: 0.5rem;"><strong>回答生成モジュール</strong>: LLMベースの回答生成</li>
-          <li style="margin-bottom: 0.5rem;"><strong>タイミング判定モジュール</strong>: 最適なボタン押下タイミングの判定</li>
-          <li style="margin-bottom: 0.5rem;"><strong>統合システム</strong>: 各モジュールを統合したリアルタイム処理システム</li>
-        </ul>
-      </div>
+      </article>
+
+      <article class="paper">
+        <p class="paper-venue">JSAI2026</p>
+        <h3 class="paper-title">早押しクイズにおける人間の認知過程を再現した大規模言語モデルに基づくシステムの構築</h3>
+        <p class="paper-authors">吉田 勇翔、白砂 大、狩野 芳伸</p>
+        <p class="paper-links">
+          <a href="https://www.jstage.jst.go.jp/article/pjsai/JSAI2026/0/JSAI2026_4L5GS1b04/_article/-char/ja/" target="_blank" rel="noopener noreferrer">J-STAGE</a>
+          <a href="https://pub.confit.atlas.jp/ja/event/jsai2026/presentation/4L5-GS-1b-04" target="_blank" rel="noopener noreferrer">Conference</a>
+        </p>
+      </article>
     </section>
 
-    <!-- Research Section -->
-    <section id="research">
-      <h2 class="section-title"><span class="title-text">Research</span></h2>
-      
-      <div class="publication-item">
-        <h3 class="publication-category">研究テーマ</h3>
-        <p class="publication-title">早押しクイズ特化型AIシステムの開発</p>
-        <p class="experience-description">
-          この研究は、静岡大学情報学部で行われており、自然言語処理と機械学習の技術を組み合わせることで、
-          早押しクイズという特殊な環境に最適化されたAIシステムの開発を目指しています。
-        </p>
-      </div>
-
-      <div class="publication-item">
-        <h3 class="publication-category">研究の意義</h3>
-        <p class="publication-title">不完全情報からの推論技術の進展</p>
-        <p class="experience-description">
-          早押しクイズは、完全な情報が与えられない状況での推論を必要とするため、
-          従来の質問応答システムとは異なるアプローチが求められます。
-          hayabusaの開発は、このような不完全情報からの推論技術の進展に貢献しています。
-        </p>
-      </div>
-
-      <div class="blog-grid" style="margin-top: 2rem;">
-        <div class="blog-card">
-          <div class="blog-card-meta">
-            <span class="blog-card-date">Publication</span>
-            <span class="blog-card-category">📄</span>
-          </div>
-          <h3 class="blog-card-title">論文</h3>
-          <p class="blog-card-excerpt">
-            発表予定の論文情報をここに追加
-          </p>
-        </div>
-
-        <div class="blog-card">
-          <div class="blog-card-meta">
-            <span class="blog-card-date">Presentation</span>
-            <span class="blog-card-category">📅</span>
-          </div>
-          <h3 class="blog-card-title">発表資料</h3>
-          <p class="blog-card-excerpt">
-            学会発表などの資料をここに追加
-          </p>
-        </div>
-      </div>
+    <section id="people" class="block">
+      <h2 class="block-title"><span>People</span></h2>
+      <ul class="people">
+        <li>
+          <p class="people-role">大会委員長</p>
+          <p class="people-name"><a href="https://bravebird0914.github.io/">吉田 勇翔</a></p>
+          <p class="people-en">Yoshida Yuto</p>
+        </li>
+        <li>
+          <p class="people-role">大会顧問</p>
+          <p class="people-name"><a href="https://sites.google.com/view/masaru-shirasuna/home" target="_blank" rel="noopener noreferrer">白砂 大</a></p>
+          <p class="people-en">Shirasuna Masaru</p>
+        </li>
+      </ul>
+      <p class="people-note">ほかの運営は、決まり次第ここに加わります。</p>
     </section>
-
-    <!-- Links Section -->
-    <section id="links">
-      <h2 class="section-title"><span class="title-text">Links</span></h2>
-      
-      <div class="blog-grid">
-        <div class="blog-card">
-          <div class="blog-card-meta">
-            <span class="blog-card-date">Repository</span>
-            <span class="blog-card-category">🔗</span>
-          </div>
-          <h3 class="blog-card-title">
-            <a href="https://github.com/bravebird0914/llm-quiz-attribution" target="_blank" rel="noopener noreferrer">GitHub</a>
-          </h3>
-          <p class="blog-card-excerpt">
-            ソースコードとリポジトリ情報
-          </p>
-          <a href="https://github.com/bravebird0914/llm-quiz-attribution" target="_blank" rel="noopener noreferrer" class="blog-card-link">
-            <span>View Repository</span>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
-          </a>
-        </div>
-
-        <div class="blog-card">
-          <div class="blog-card-meta">
-            <span class="blog-card-date">Portfolio</span>
-            <span class="blog-card-category">🏠</span>
-          </div>
-          <h3 class="blog-card-title">
-            <a href="../index.html">Portfolio</a>
-          </h3>
-          <p class="blog-card-excerpt">
-            メインポートフォリオサイト
-          </p>
-          <a href="../index.html" class="blog-card-link">
-            <span>Back to Portfolio</span>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <footer class="site-footer" aria-label="Site footer">
-      <p id="site-footer-text" class="site-footer-text">bravebird. All rights reserved.</p>
-    </footer>
-
   </main>
 
-  <script src="../js/main.js"></script>
+  <footer class="site-footer">
+    <p class="footer-row"><span class="footer-label">Contact</span><a href="mailto:yyoshida@kanolab.net">yyoshida@kanolab.net</a></p>
+    <p class="footer-row footer-small"><a href="../index.html">bravebird</a></p>
+  </footer>
+
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="falcon" viewBox="0 0 64 64">
+      <path d="M4 33 L29 26 L45 7 L40 27 L61 29 L41 34 L33 52 L29 36 Z" fill="currentColor" />
+      <path d="M2 40 H18 M6 45 H20 M10 50 H22" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity=".55" />
+    </symbol>
+  </svg>
+
+  <script src="js/hayabusa.js?v=20261116-3" defer></script>
 </body>
 </html>
