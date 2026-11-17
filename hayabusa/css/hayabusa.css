@@ -23,21 +23,22 @@
 }
 
 [data-theme="night"] {
-  --bg-top: #040814;
-  --bg-mid: #071428;
-  --bg-bottom: #0b1c38;
-  --ink: #e7f6ff;
-  --ink-soft: rgba(231, 246, 255, 0.78);
-  --accent: #d5e9f6;
-  --card: rgba(8, 20, 42, 0.55);
-  --card-border: rgba(220, 235, 248, 0.22);
-  --line: rgba(220, 235, 248, 0.2);
-  --streak: rgba(255, 255, 255, 0.55);
-  --cloud: 0.32;
-  --grid: 0.22;
-  --star: 1;
-  --lamp: #ff5a45;
-  --shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+  --bg-top: #070b09;
+  --bg-mid: #070b09;
+  --bg-bottom: #070b09;
+  --ink: #d8ffe8;
+  --ink-soft: rgba(168, 230, 190, 0.78);
+  --accent: #3dff9a;
+  --card: rgba(6, 14, 10, 0.88);
+  --card-border: rgba(61, 255, 154, 0.45);
+  --line: rgba(61, 255, 154, 0.28);
+  --streak: transparent;
+  --cloud: 0;
+  --grid: 1;
+  --star: 0;
+  --lamp: #ff4d3a;
+  --shadow: none;
+  --font-ui: 'IBM Plex Mono', ui-monospace, monospace;
 }
 
 *,
@@ -608,6 +609,84 @@ main,
   .match-title {
     font-size: 1.3rem;
   }
+}
+
+[data-theme="night"] .sky-clouds,
+[data-theme="night"] .streak,
+[data-theme="night"] .sky-stars {
+  display: none;
+}
+
+[data-theme="night"] .sky-grid {
+  background-image:
+    linear-gradient(rgba(61, 255, 154, 0.16) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(61, 255, 154, 0.16) 1px, transparent 1px);
+  background-size: 28px 28px;
+  mask-image: none;
+}
+
+[data-theme="night"] .sky::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.22) 0 1px,
+    transparent 1px 4px
+  );
+}
+
+[data-theme="night"] .site-header {
+  background: rgba(7, 11, 9, 0.92);
+  border-bottom-color: rgba(61, 255, 154, 0.45);
+}
+
+[data-theme="night"] .brand-name,
+[data-theme="night"] .hero-title,
+[data-theme="night"] .hero-kicker,
+[data-theme="night"] .site-nav a,
+[data-theme="night"] .block-title,
+[data-theme="night"] .match-tag,
+[data-theme="night"] .info-title,
+[data-theme="night"] .buzzer-demo-label,
+[data-theme="night"] .paper-venue,
+[data-theme="night"] .footer-label,
+[data-theme="night"] .people-role,
+[data-theme="night"] .hero-copy {
+  font-family: var(--font-ui);
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+}
+
+[data-theme="night"] .hero-title {
+  font-size: clamp(2.4rem, 8vw, 5.2rem);
+  line-height: 1;
+  letter-spacing: 0.14em;
+}
+
+[data-theme="night"] .brand-name {
+  font-size: 1.05rem;
+  padding-top: 0;
+  letter-spacing: 0.12em;
+}
+
+[data-theme="night"] .match-title span {
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  letter-spacing: 0.14em;
+}
+
+[data-theme="night"] .buzzer-demo,
+[data-theme="night"] .match-card,
+[data-theme="night"] .info-card,
+[data-theme="night"] .paper {
+  border-radius: 2px;
+}
+
+[data-theme="night"] .paper-links a,
+[data-theme="night"] .people-name a {
+  border-radius: 2px;
 }
 
 @media (prefers-reduced-motion: reduce) {

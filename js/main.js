@@ -43,7 +43,7 @@ function updateCurrentDate() {
   }
 
   if (footerText) {
-    footerText.textContent = `${year}.${month}.${day} bravebird. All rights reserved.`;
+    footerText.textContent = `${year}.${month}.${day} 吉田勇翔 (bravebird). All rights reserved.`;
   }
 }
 
