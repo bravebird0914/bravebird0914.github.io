@@ -1,22 +1,4 @@
 (function () {
-  var root = document.documentElement;
-
-  function tokyoHour() {
-    return Number(new Intl.DateTimeFormat('en-US', {
-      timeZone: 'Asia/Tokyo',
-      hour: 'numeric',
-      hourCycle: 'h23'
-    }).format(new Date()));
-  }
-
-  function applyTheme() {
-    var hour = tokyoHour();
-    root.dataset.theme = hour >= 5 && hour < 17 ? 'day' : 'night';
-  }
-
-  applyTheme();
-  setInterval(applyTheme, 60000);
-
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var stars = document.getElementById('sky-stars');
   var streaks = document.getElementById('sky-streaks');
